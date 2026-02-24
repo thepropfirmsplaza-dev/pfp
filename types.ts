@@ -26,4 +26,4 @@ export interface QuizPreferences {
   riskAppetite: string;
 }
 
-export type ViewState = 'home' | 'discovery' | 'compare' | 'quiz' | 'dashboard';
+export type ViewState = 'home' | 'discovery' | 'compare' | 'quiz' | 'dashboard' | 'firm-detail';

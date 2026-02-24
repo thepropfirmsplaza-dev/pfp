@@ -1,139 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capital Match | Premium Prop Firm Discovery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#8B5CF6', // Vivid Violet
-              secondary: '#10B981', // Emerald
-              accent: '#F59E0B', // Gold
-              dark: '#030014', // Deep Obsidian
-              'dark-mid': '#0F0B1E', // Slightly lighter dark
-              'dark-card': '#161229', // Card background
-              'text-light': '#E2E8F0', // Slate 200
-              'text-muted': '#94A3B8', // Slate 400
-              white: '#FFFFFF',
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capital Match | Premium Prop Firm Discovery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6', // Vivid Violet
+            secondary: '#22E4AF', // Mint Glow
+            accent: '#F59E0B', // Gold
+            dark: '#030014', // Deep Obsidian
+            'dark-mid': '#0F0B1E', // Slightly lighter dark
+            'dark-card': '#161229', // Card background
+            'text-light': '#E2E8F0', // Slate 200
+            'text-muted': '#94A3B8', // Slate 400
+            white: '#FFFFFF',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Clash Display', 'Inter', 'sans-serif'], // Imaginary font stack, falling back to Inter
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'blob': 'blob 10s infinite',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+            'marquee': 'marquee 40s linear infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-100%)' },
             },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Clash Display', 'Inter', 'sans-serif'], // Imaginary font stack, falling back to Inter
-              mono: ['JetBrains Mono', 'monospace'],
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
             },
-            animation: {
-              'blob': 'blob 10s infinite',
-              'fade-in': 'fadeIn 0.5s ease-out forwards',
-            },
-            keyframes: {
-              blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
             }
           }
         }
       }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-      body {
-        background-color: #030014;
-        color: #FFFFFF;
-        font-family: 'Inter', sans-serif;
-        background-image: 
-          radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%), 
-          radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
-        background-attachment: fixed;
-      }
-      
-      .glass-panel {
-        background: rgba(15, 11, 30, 0.7);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      
-      .glass-card {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      
-      .glass-card:hover {
-        border-color: rgba(139, 92, 246, 0.3);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.15);
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: #030014;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(34, 228, 175, 0.05), transparent 25%);
+      background-attachment: fixed;
+    }
+
+    .glass-panel {
+      background: rgba(15, 11, 30, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.15);
+    }
+
+    .premium-gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 50%, #A78BFA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradientMove 5s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
       }
 
-      .premium-gradient-text {
-        background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 50%, #A78BFA 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-size: 200% auto;
-        animation: gradientMove 5s ease infinite;
-      }
-      
-      @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+      50% {
+        background-position: 100% 50%;
       }
 
-      .btn-primary {
-        background: linear-gradient(90deg, #7C3AED 0%, #6D28D9 100%);
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: all 0.3s ease;
+      100% {
+        background-position: 0% 50%;
       }
-      
-      .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%);
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.3s ease;
-      }
-      
-      .btn-primary:hover::before {
-        opacity: 1;
-      }
-      
-      .btn-primary:hover {
-        box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
-      }
+    }
 
-      /* Scrollbar */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #030014; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #334155; 
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #475569; 
-      }
-    </style>
+    .btn-primary {
+      background: linear-gradient(90deg, #7C3AED 0%, #6D28D9 100%);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #030014;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -146,10 +168,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
