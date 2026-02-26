@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
 interface FirmData {
@@ -119,7 +119,7 @@ const PayoutNotification: React.FC = () => {
             };
         } else {
             // Discount Logic
-            // Code: CAPITAL
+            // Code: SPOT
             // Real Price = challenge.price
             // "Was" Price (implied) = Real Price / 0.8
             // Saved = Was - Real
@@ -132,7 +132,7 @@ const PayoutNotification: React.FC = () => {
                     accountSize: accountSizeDisplay,
                     currency: '$',
                     amount: '',
-                    discountCode: 'CAPITAL',
+                    discountCode: 'SPOT',
                     savedAmount: '20'
                 };
             }
@@ -146,7 +146,7 @@ const PayoutNotification: React.FC = () => {
                 accountSize: accountSizeDisplay,
                 currency: '$',
                 amount: '',
-                discountCode: 'CAPITAL', // HARDCODED
+                discountCode: 'SPOT', // HARDCODED
                 savedAmount: saved.toLocaleString(),
             };
         }
@@ -198,13 +198,13 @@ const PayoutNotification: React.FC = () => {
                 : '-translate-x-8 translate-y-4 opacity-0 scale-95 pointer-events-none'
                 }`}
         >
-            {/* Main card with primary border glow */}
-            <div className="relative bg-[#0f0b1e] backdrop-blur-xl rounded-xl border border-primary/30 shadow-[0_0_20px_-5px_rgba(139,92,246,0.4)] overflow-hidden">
+            {/* Main card with gold border glow */}
+            <div className="relative bg-brand-charcoal backdrop-blur-xl rounded-xl border border-brand-gold/50 shadow-[0_0_20px_-5px_rgba(246,174,19,0.4)] overflow-hidden">
 
                 {/* Close button */}
                 <button
                     onClick={() => setIsVisible(false)}
-                    className="absolute top-2 right-2 text-gray-500 hover:text-white transition-all duration-300 hover:rotate-90 z-10"
+                    className="absolute top-2 right-2 text-brand-muted hover:text-white transition-all duration-300 hover:rotate-90 z-10"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -214,13 +214,13 @@ const PayoutNotification: React.FC = () => {
                 <div className="flex items-center p-4">
                     {/* Favicon container - Bigger, no full-height bg */}
                     <div className="flex-shrink-0 mr-4">
-                        <div className="w-16 h-16 rounded-xl bg-dark flex items-center justify-center border border-primary/40 p-2 shadow-[0_0_15px_-5px_rgba(139,92,246,0.4)]">
+                        <div className="w-16 h-16 rounded-xl bg-black flex items-center justify-center border border-purple-500/40 p-2 shadow-[0_0_15px_-5px_rgba(168,85,247,0.4)]">
                             <img
                                 src={notification.firm.favicon}
                                 alt={notification.firm.name}
-                                className="w-full h-full object-contain rounded-lg"
+                                className="w-full h-full object-contain"
                                 onError={(e) => {
-                                    (e.target as HTMLImageElement).src = 'https://placehold.co/64x64/030014/8B5CF6?text=' + notification.firm.name.charAt(0);
+                                    (e.target as HTMLImageElement).src = 'https://placehold.co/64x64/000000/F6AE13?text=' + notification.firm.name.charAt(0);
                                 }}
                             />
                         </div>
@@ -237,7 +237,7 @@ const PayoutNotification: React.FC = () => {
                                 payout from{' '}
                                 <span className="text-white font-bold">{notification.firm.name}</span>{' '}
                                 with a{' '}
-                                <span className="text-primary font-bold underline underline-offset-2">
+                                <span className="text-brand-gold font-bold underline underline-offset-2">
                                     {notification.accountSize}
                                 </span>{' '}
                                 account!
@@ -245,7 +245,7 @@ const PayoutNotification: React.FC = () => {
                         ) : (
                             <p className="text-white text-[15px] leading-relaxed">
                                 A trader just purchased a{' '}
-                                <span className="text-primary font-bold underline underline-offset-2">
+                                <span className="text-brand-gold font-bold underline underline-offset-2">
                                     {notification.accountSize}
                                 </span>{' '}
                                 challenge from{' '}
@@ -255,7 +255,7 @@ const PayoutNotification: React.FC = () => {
                                     ${notification.savedAmount}
                                 </span>{' '}
                                 using the code{' '}
-                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/20 text-primary font-bold text-base border border-primary/30 ml-1 shadow-[0_0_10px_rgba(139,92,246,0.3)]">
+                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-400 font-bold text-sm border border-pink-500/30 ml-1">
                                     {notification.discountCode}
                                 </span>
                             </p>

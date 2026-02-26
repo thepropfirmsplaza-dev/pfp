@@ -68,14 +68,8 @@ const AdminLayout: React.FC = () => {
             {/* Sidebar */}
             <aside className={`${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} lg:w-64 bg-[#0F0B1E] border-r border-[#2D2745] flex flex-col h-full flex-shrink-0 transition-all duration-300`}>
                 {/* Logo */}
-                <div className="p-5 border-b border-[#2D2745] flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary font-black text-sm">CM</span>
-                    </div>
-                    <div className="flex flex-col overflow-hidden">
-                        <h1 className="text-white text-sm font-bold leading-none tracking-tight">Capital Match</h1>
-                        <span className="text-primary/60 text-[10px] font-semibold mt-0.5 uppercase tracking-widest">Admin Console</span>
-                    </div>
+                <div className="p-5 border-b border-[#2D2745] flex items-center h-[5rem] cursor-pointer" onClick={() => navigate('/admin')}>
+                    <img src="/logo.png" alt="Capital Match Admin" className="h-[4.5rem] w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] -ml-2" />
                 </div>
 
                 {/* Navigation */}

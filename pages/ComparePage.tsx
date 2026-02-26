@@ -8,6 +8,8 @@ import { useComparison } from '../context/ComparisonContext';
 const ComparePage: React.FC = () => {
   const { selectedFirms, removeFirm, toggleFirm } = useComparison();
   const [allFirms, setAllFirms] = useState<Firm[]>([]);
+  const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(null);
+  const [openEditDropdownIndex, setOpenEditDropdownIndex] = useState<number | null>(null);
 
   // Array of 3 slots, filled with selected firms
   const slots = [0, 1, 2].map(i => selectedFirms[i] || null);
@@ -85,36 +87,77 @@ const ComparePage: React.FC = () => {
                           </div>
 
                           <div className="relative">
-                            <select
-                              className="w-full bg-brand-charcoal border border-brand-border rounded-lg text-xs md:text-sm text-white px-2 py-1.5 pr-6 focus:border-brand-gold focus:ring-0 appearance-none cursor-pointer outline-none transition-all hover:border-brand-gold/50"
-                              value={selectedFirm.id}
-                              onChange={(e) => handleSelectFirm(e.target.value)}
+                            <button
+                              className="w-full bg-brand-charcoal border border-brand-border rounded-lg text-xs md:text-sm text-white px-3 py-2 flex justify-between items-center appearance-none cursor-pointer outline-none transition-all hover:border-brand-gold/50"
+                              onClick={() => setOpenEditDropdownIndex(openEditDropdownIndex === index ? null : index)}
                             >
-                              {allFirms.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
-                            </select>
-                            <ChevronDown className="absolute right-2 top-2 text-brand-muted pointer-events-none" size={14} />
+                              <span className="truncate">{selectedFirm.name}</span>
+                              <ChevronDown className="text-brand-muted shrink-0" size={14} />
+                            </button>
+
+                            {openEditDropdownIndex === index && (
+                              <>
+                                <div className="fixed inset-0 z-20" onClick={() => setOpenEditDropdownIndex(null)}></div>
+                                <div className="absolute top-full left-0 right-0 mt-1 z-30 bg-brand-charcoal border border-brand-border rounded-xl p-2 shadow-2xl max-h-[200px] overflow-y-auto custom-scrollbar">
+                                  {allFirms.map(f => (
+                                    <button
+                                      key={f.id}
+                                      onClick={() => {
+                                        handleSelectFirm(f.id);
+                                        setOpenEditDropdownIndex(null);
+                                      }}
+                                      className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedFirm.id === f.id ? 'bg-brand-gold text-brand-black font-bold' : 'text-brand-muted hover:bg-brand-black hover:text-white'}`}
+                                    >
+                                      {f.name}
+                                    </button>
+                                  ))}
+                                </div>
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>
                     ) : (
                       <div className="h-full flex flex-col justify-center min-h-[140px]">
-                        <div className="relative h-full flex items-center">
-                          <select
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                            onChange={(e) => handleSelectFirm(e.target.value)}
-                            value=""
-                          >
-                            <option value="" disabled>Select Firm</option>
-                            {allFirms.filter(f => !selectedFirms.some(sf => sf.id === f.id)).map(f => (
-                              <option key={f.id} value={f.id}>{f.name}</option>
-                            ))}
-                          </select>
-                          <div className="border-2 border-dashed border-brand-border hover:border-brand-gold/50 hover:bg-brand-charcoal/50 rounded-xl h-full w-full flex flex-col items-center justify-center gap-3 transition-all group-hover:border-brand-gold/30">
-                            <div className="size-10 rounded-full bg-brand-black border border-brand-border text-brand-muted flex items-center justify-center group-hover:text-white transition-colors">
-                              <Plus size={24} />
+                        <div className="relative h-full flex flex-col items-center w-full">
+                          {openDropdownIndex === index ? (
+                            <div className="absolute inset-x-0 -top-2 z-20 bg-brand-charcoal border border-brand-border rounded-xl p-2 flex flex-col shadow-2xl max-h-[250px] min-h-[150px]">
+                              <div className="flex justify-between items-center mb-2 px-2">
+                                <h4 className="text-xs font-bold text-brand-muted uppercase">Select Firm</h4>
+                                <button onClick={() => setOpenDropdownIndex(null)} className="text-brand-muted hover:text-red-400">
+                                  <X size={14} />
+                                </button>
+                              </div>
+                              <div className="flex-1 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                                {allFirms.filter(f => !selectedFirms.some(sf => sf?.id === f.id)).length > 0 ? (
+                                  allFirms.filter(f => !selectedFirms.some(sf => sf?.id === f.id)).map(f => (
+                                    <button
+                                      key={f.id}
+                                      className="w-full text-left px-3 py-2 rounded-lg text-sm text-white hover:bg-brand-gold hover:text-brand-black transition-colors"
+                                      onClick={() => {
+                                        handleSelectFirm(f.id);
+                                        setOpenDropdownIndex(null);
+                                      }}
+                                    >
+                                      {f.name}
+                                    </button>
+                                  ))
+                                ) : (
+                                  <div className="text-xs text-brand-muted text-center py-4">No more firms available</div>
+                                )}
+                              </div>
                             </div>
-                            <span className="text-sm font-bold text-brand-muted group-hover:text-white transition-colors">Add Firm</span>
-                          </div>
+                          ) : (
+                            <div
+                              className="border-2 border-dashed border-brand-border hover:border-brand-gold/50 hover:bg-brand-charcoal/50 rounded-xl h-full w-full flex flex-col items-center justify-center gap-3 transition-all group-hover:border-brand-gold/30 cursor-pointer absolute inset-0"
+                              onClick={() => setOpenDropdownIndex(index)}
+                            >
+                              <div className="size-10 rounded-full bg-brand-black border border-brand-border text-brand-muted flex items-center justify-center group-hover:text-white transition-colors">
+                                <Plus size={24} />
+                              </div>
+                              <span className="text-sm font-bold text-brand-muted group-hover:text-white transition-colors">Add Firm</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
@@ -269,9 +312,9 @@ const ComparePage: React.FC = () => {
               </table>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </div >
+      </main >
+    </div >
   );
 };
 

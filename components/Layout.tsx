@@ -21,15 +21,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <header className="fixed top-4 left-4 right-4 md:left-8 md:right-8 lg:left-0 lg:right-0 lg:max-w-7xl lg:mx-auto z-50 rounded-2xl border border-white/10 bg-dark/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300">
         <div className="px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center cursor-pointer group" onClick={() => navigate('/')}>
-            <div className="relative mr-3">
-              <div className="absolute inset-0 bg-primary/40 blur-md rounded-lg group-hover:bg-primary/60 transition-colors"></div>
-              <div className="bg-dark-mid p-2 rounded-lg relative border border-white/10">
-                <Hexagon className="text-primary w-6 h-6 fill-primary/20" />
-              </div>
+            <div className="relative mr-3 flex items-center h-10">
+              <img src="/logo.png" alt="Capital Match Logo" className="h-[4.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all -ml-1" />
             </div>
-            <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-              CAPITAL <span className="text-primary font-extrabold">MATCH</span>
-            </span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-1">
@@ -105,11 +99,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="p-1.5 bg-primary/20 rounded mr-2 border border-primary/20">
-                  <Hexagon className="text-primary w-5 h-5 fill-primary/20" />
-                </div>
-                <span className="font-bold tracking-wider text-lg">CAPITAL MATCH</span>
+              <div className="flex items-center mb-6 h-8 cursor-pointer" onClick={() => navigate('/')}>
+                <img src="/logo.png" alt="Capital Match Logo" className="h-[4rem] w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] -ml-2" />
               </div>
               <p className="text-text-muted text-sm leading-relaxed mb-6">
                 The premier ecosystem for proprietary trading firms. Discovery, analytics, and verification powered by AI.

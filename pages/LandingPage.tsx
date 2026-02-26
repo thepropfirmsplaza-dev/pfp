@@ -2,7 +2,6 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { FeaturedFirms } from '../components/FeaturedFirms';
 import { HowItWorks } from '../components/HowItWorks';
-import { VisualComparisonHub } from '../components/VisualComparisonHub';
 import { FAQSection } from '../components/FAQSection';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +24,6 @@ const LandingPage: React.FC = () => {
       <div id="featured-firms">
         <FeaturedFirms />
       </div>
-      <VisualComparisonHub />
       <HowItWorks />
       <FAQSection />
     </div>

@@ -127,7 +127,7 @@ export const MOCK_FIRMS: Firm[] = [
 ];
 
 export const NAV_ITEMS = [
-  { id: 'discovery', label: 'Discover', icon: Globe, path: '/firms' },
+  { id: 'discovery', label: 'Firms', icon: Globe, path: '/firms' },
   { id: 'compare', label: 'Compare', icon: TrendingUp, path: '/compare' },
   { id: 'quiz', label: 'Match AI', icon: Zap, path: '/quiz' },
   { id: 'dashboard', label: 'Dashboard', icon: ShieldCheck, path: '/dashboard' },

@@ -70,15 +70,17 @@ const SignupPage = () => {
             </div>
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
-                <div className="flex justify-center">
-                    <img
-                        className="h-24 w-auto drop-shadow-glow"
-                        src="http://zainenterprisespakistan.com/wp-content/uploads/2025/12/Untitled-design-28-scaled.png"
-                        alt="Prop Match Spot"
-                    />
+                <div className="flex justify-center mb-6">
+                    <Link to="/" className="relative flex items-center justify-center h-20 group">
+                        <img
+                            src="/logo.png"
+                            alt="Capital Match"
+                            className="h-24 w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 transform group-hover:scale-105"
+                        />
+                    </Link>
                 </div>
                 <h2 className="mt-6 text-center text-3xl font-bold text-white tracking-tight">
-                    Join Prop Match Spot
+                    Join Capital Match
                 </h2>
                 <p className="mt-2 text-center text-sm text-brand-muted">
                     Start your journey to becoming a funded trader
