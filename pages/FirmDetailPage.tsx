@@ -175,8 +175,8 @@ const FirmDetailPage: React.FC = () => {
 
           {/* Firm Header */}
           <div className="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-white/[0.03]">
-              <img src={logoSrc} alt={firm.name} className="w-full h-full object-cover" />
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-[#0f0b1e]">
+              <img src={logoSrc} alt={firm.name} className="w-full h-full object-contain p-2" />
             </div>
             <div className="flex-grow">
               <div className="flex items-center space-x-3 mb-2">
