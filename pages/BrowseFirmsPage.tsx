@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { Search, SlidersHorizontal, LayoutGrid, List, CheckCircle2, Flame, Star, Zap, ShieldCheck, Mail } from 'lucide-react';
 import { FirmCard } from '../components/FirmCard';
 import { FirmService } from '../lib/services';
 import { Firm } from '../types';
@@ -29,22 +29,19 @@ const BrowseFirmsPage: React.FC = () => {
   const [maxDrawdown, setMaxDrawdown] = useState(10);
   const [minRating, setMinRating] = useState(4);
   const [selectedAccountType, setSelectedAccountType] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Dynamic Date Logic
   const { dynamicTitle, todayDate } = useMemo(() => {
     const now = new Date();
     const currentDay = now.getDate();
-
-    // Logic: If > 21 days (3 weeks) have passed, show next month
-    // Otherwise show current month
     const targetDate = currentDay > 21
       ? new Date(now.getFullYear(), now.getMonth() + 1, 1)
       : now;
 
-    const monthName = targetDate.toLocaleString('en-US', { month: 'short' });
+    const monthName = targetDate.toLocaleString('en-US', { month: 'long' });
     const year = targetDate.getFullYear();
 
-    // Format: "Oct 24, 2024"
     const formattedToday = now.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -58,26 +55,19 @@ const BrowseFirmsPage: React.FC = () => {
   }, []);
 
   const filteredFirms = firms.filter(firm => {
-    // Search filter - matches name or tags
     const tagMatch = firm.tags ? firm.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) : false;
     const matchesSearch = !searchTerm || firm.name.toLowerCase().includes(searchTerm.toLowerCase()) || tagMatch;
-
-    // Rating filter
     const matchesRating = firm.rating >= minRating;
 
-    // Profit Split filter - parse the profit split string to get max value
     const profitSplitStr = firm.profitSplit || '80';
-    // Extract numbers from strings like "80 - 90%" or "Up to 95%"
     const profitNumbers = profitSplitStr.match(/\d+/g);
     const maxProfitSplit = profitNumbers ? Math.max(...profitNumbers.map(Number)) : 80;
     const matchesProfitSplit = maxProfitSplit >= profitSplit;
 
-    // Drawdown filter - parse the drawdown string to compare
     const drawdownStr = firm.drawdown || '10%';
     const drawdownNum = parseInt(drawdownStr.replace(/[^0-9]/g, '')) || 10;
     const matchesDrawdown = drawdownNum <= maxDrawdown;
 
-    // Account Type filter
     let matchesType = true;
     if (selectedAccountType) {
       const typeMap: Record<string, string> = {
@@ -87,7 +77,6 @@ const BrowseFirmsPage: React.FC = () => {
         'Instant': 'Instant'
       };
       const targetType = typeMap[selectedAccountType];
-      // Check if ANY challenge matches the type
       matchesType = firm.challenges ? firm.challenges.some(c => c.challengeType === targetType) : true;
     }
 
@@ -95,58 +84,85 @@ const BrowseFirmsPage: React.FC = () => {
   });
 
   return (
-    <main className="flex-grow pt-24 pb-20 bg-brand-black min-h-screen">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+    <main className="flex-grow pt-24 pb-20 bg-dark min-h-screen relative overflow-hidden">
+      {/* Background Ambience */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 rounded-[100%] blur-[120px] pointer-events-none opacity-50"></div>
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 mt-10">
 
         {loading && (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           </div>
         )}
 
         {!loading && (
           <>
             {/* Page Heading */}
-            <div className="mb-8 border-b border-brand-border pb-8">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div className="max-w-2xl">
-                  <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-3">{dynamicTitle}</h1>
-                  <p className="text-brand-muted text-lg">Compare, review, and discover the world's leading proprietary trading firms designed for professional traders.</p>
+            <div className="mb-12 border-b border-white/5 pb-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div className="max-w-3xl">
+                  <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-6">
+                    <ShieldCheck className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">Discovery Engine Active</span>
+                  </div>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
+                    {dynamicTitle.replace(dynamicTitle.split(' ').pop() || '', '')}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">{dynamicTitle.split(' ').pop()}</span>
+                  </h1>
+                  <p className="text-gray-400 text-lg md:text-xl font-light">Compare, review, and discover the world's leading proprietary trading firms designed for professional traders.</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-brand-muted">
-                  <span className="material-symbols-outlined text-brand-gold text-[18px]">verified</span>
-                  <span>Updated: {todayDate}</span>
+                <div className="flex items-center gap-2 text-sm text-gray-400 bg-white/5 px-4 py-2 rounded-xl border border-white/5">
+                  <CheckCircle2 className="w-4 h-4 text-secondary" />
+                  <span>Real-time intel updated: <span className="text-white font-medium">{todayDate}</span></span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-8">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
               {/* Sidebar Filters */}
-              <aside className="w-full lg:w-72 shrink-0 space-y-8">
-                <div className="flex items-center justify-between">
+              <aside className="w-full lg:w-80 shrink-0 space-y-8">
+                <div className="flex items-center justify-between pb-4 border-b border-white/5">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <span className="material-symbols-outlined">tune</span> Filters
+                    <SlidersHorizontal className="w-5 h-5 text-primary" /> Filters
                   </h3>
                   <button
                     onClick={() => { setSearchTerm(''); setProfitSplit(80); setMaxDrawdown(10); setMinRating(4); setSelectedAccountType(null); }}
-                    className="text-xs font-medium text-brand-gold hover:text-white transition-colors"
+                    className="text-xs font-medium text-gray-400 hover:text-white transition-colors"
                   >
                     Reset All
                   </button>
                 </div>
 
+                {/* Filter Group: Search */}
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Search Firms</label>
+                  <div className="relative group">
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500 group-focus-within:text-primary transition-colors">
+                      <Search className="w-4 h-4" />
+                    </span>
+                    <input
+                      type="text"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full bg-[#0f0b1e] border border-white/10 rounded-xl pl-11 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-1 focus:ring-primary/50 placeholder-gray-600 outline-none transition-all shadow-inner"
+                      placeholder="e.g. FTMO, Alpha"
+                    />
+                  </div>
+                </div>
+
                 {/* Filter Group: Account Type (Toggle) */}
                 <div className="space-y-3">
-                  <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Evaluation Type</label>
+                  <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Evaluation Type</label>
                   <div className="flex flex-wrap gap-2">
                     {['One Step', 'Two Step', 'Three Step', 'Instant'].map((type) => (
                       <button
                         key={type}
                         onClick={() => setSelectedAccountType(selectedAccountType === type ? null : type)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${selectedAccountType === type
-                          ? 'bg-brand-gold text-brand-black border-brand-gold shadow-[0_0_10px_rgba(246,174,19,0.3)]'
-                          : 'bg-brand-charcoal text-brand-muted border-brand-border hover:border-brand-gold/50 hover:text-white'
+                        className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${selectedAccountType === type
+                          ? 'bg-primary text-white border-primary shadow-[0_0_15px_rgba(124,58,237,0.4)]'
+                          : 'bg-[#0f0b1e] text-gray-400 border-white/10 hover:border-primary/50 hover:text-white'
                           }`}
                       >
                         {type}
@@ -155,28 +171,11 @@ const BrowseFirmsPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Filter Group: Search */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Firm Name</label>
-                  <div className="relative">
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-brand-muted">
-                      <span className="material-symbols-outlined text-[18px]">search</span>
-                    </span>
-                    <input
-                      type="text"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-brand-charcoal border border-brand-border rounded-lg pl-9 pr-3 py-2.5 text-sm text-white focus:border-brand-gold focus:ring-0 placeholder-brand-muted/50 focus:outline-none transition-colors"
-                      placeholder="e.g. FTMO"
-                    />
-                  </div>
-                </div>
-
                 {/* Filter Group: Profit Split */}
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Profit Split</label>
-                    <span className="text-xs text-brand-gold font-bold">Up to {profitSplit}%</span>
+                    <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Min Profit Split</label>
+                    <span className="text-sm text-white bg-white/10 px-2 py-0.5 rounded font-bold">{profitSplit}%</span>
                   </div>
                   <div className="px-1">
                     <input
@@ -185,9 +184,9 @@ const BrowseFirmsPage: React.FC = () => {
                       max="100"
                       value={profitSplit}
                       onChange={(e) => setProfitSplit(Number(e.target.value))}
-                      className="w-full h-2 bg-brand-border rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
                     />
-                    <div className="flex justify-between mt-2 text-xs text-brand-muted">
+                    <div className="flex justify-between mt-3 text-xs font-medium text-gray-500">
                       <span>50%</span>
                       <span>100%</span>
                     </div>
@@ -197,8 +196,8 @@ const BrowseFirmsPage: React.FC = () => {
                 {/* Filter Group: Max Drawdown */}
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Max Drawdown</label>
-                    <span className="text-xs text-white font-bold">{maxDrawdown}%</span>
+                    <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Max Drawdown</label>
+                    <span className="text-sm text-white bg-white/10 px-2 py-0.5 rounded font-bold">{maxDrawdown}%</span>
                   </div>
                   <div className="px-1">
                     <input
@@ -207,66 +206,73 @@ const BrowseFirmsPage: React.FC = () => {
                       max="20"
                       value={maxDrawdown}
                       onChange={(e) => setMaxDrawdown(Number(e.target.value))}
-                      className="w-full h-2 bg-brand-border rounded-lg appearance-none cursor-pointer"
+                      className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary"
                     />
-                    <div className="flex justify-between mt-2 text-xs text-brand-muted">
+                    <div className="flex justify-between mt-3 text-xs font-medium text-gray-500">
                       <span>5%</span>
                       <span>20%</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Filter Group: Asset Type */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Asset Type</label>
-                  <div className="space-y-2">
-                    {['Forex', 'Indices', 'Commodities', 'Crypto'].map((asset) => (
-                      <label key={asset} className="flex items-center gap-3 group cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          defaultChecked={['Indices'].includes(asset)}
-                          className="size-4 rounded border-brand-border bg-brand-charcoal text-brand-gold focus:ring-offset-brand-black focus:ring-brand-gold checked:bg-brand-gold checked:border-brand-gold appearance-none border"
-                        />
-                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{asset}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Filter Group: Rating */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-brand-muted uppercase tracking-wider">Minimum Rating</label>
-                  <div className="flex flex-col gap-2">
+                <div className="space-y-4">
+                  <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Trust Score</label>
+                  <div className="flex flex-col gap-3">
                     {[4, 3].map((rating) => (
-                      <label key={rating} className="flex items-center gap-2 cursor-pointer group">
+                      <label key={rating} className="flex items-center gap-3 cursor-pointer group">
+                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${minRating === rating ? 'bg-primary border-primary' : 'bg-[#0f0b1e] border-white/20 group-hover:border-primary/50'}`}>
+                          {minRating === rating && <CheckCircle2 className="w-3.h-3 text-white" />}
+                        </div>
                         <input
                           type="radio"
                           name="rating"
                           checked={minRating === rating}
                           onChange={() => setMinRating(rating)}
-                          className="size-4 border-brand-border bg-brand-charcoal text-brand-gold focus:ring-offset-brand-black focus:ring-brand-gold appearance-none border rounded-full checked:bg-brand-gold"
+                          className="sr-only"
                         />
-                        <div className="flex text-brand-gold text-[16px]">
+                        <div className="flex text-yellow-500">
                           {[1, 2, 3, 4, 5].map(s => (
-                            <span key={s} className={`material-symbols-outlined ${s <= rating ? 'fill-current' : 'text-brand-border'}`}>
-                              star
-                            </span>
+                            <Star key={s} className={`w-4 h-4 ${s <= rating ? 'fill-current' : 'text-gray-700'}`} />
                           ))}
                         </div>
-                        <span className="text-sm text-brand-muted group-hover:text-white">& Up</span>
+                        <span className="text-sm text-gray-400 group-hover:text-white transition-colors">& Up</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Filter Group: Asset Type */}
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Tradable Assets</label>
+                  <div className="space-y-3">
+                    {['Forex', 'Indices', 'Commodities', 'Crypto'].map((asset) => (
+                      <label key={asset} className="flex items-center gap-3 group cursor-pointer select-none">
+                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${['Indices', 'Forex'].includes(asset) ? 'bg-primary border-primary' : 'bg-[#0f0b1e] border-white/20 group-hover:border-primary/50'}`}>
+                          {['Indices', 'Forex'].includes(asset) && <CheckCircle2 className="w-3.h-3 text-white" />}
+                        </div>
+                        <input
+                          type="checkbox"
+                          defaultChecked={['Indices', 'Forex'].includes(asset)}
+                          className="sr-only"
+                        />
+                        <span className="text-sm text-gray-400 group-hover:text-white transition-colors">{asset}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 {/* CTA Block */}
-                <div className="p-4 rounded-xl bg-gradient-to-br from-brand-charcoal to-[#2a251a] border border-brand-border/50 text-center space-y-3">
-                  <div className="size-10 rounded-full bg-brand-gold/20 flex items-center justify-center mx-auto text-brand-gold">
-                    <span className="material-symbols-outlined">mark_email_unread</span>
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0f0b1e] to-primary/10 border border-primary/20 text-center space-y-4 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mx-auto text-primary relative z-10 border border-primary/30">
+                    <Mail className="w-6 h-6" />
                   </div>
-                  <h4 className="text-white font-bold text-sm">Get New Deals</h4>
-                  <p className="text-xs text-brand-muted">Join 15,000+ traders getting weekly prop firm discounts.</p>
-                  <button className="w-full py-2 text-xs font-bold uppercase tracking-wider text-brand-black bg-white rounded hover:bg-gray-200 transition-colors">Subscribe</button>
+                  <div className="relative z-10">
+                    <h4 className="text-white font-bold mb-1">Get Exclusive Deals</h4>
+                    <p className="text-sm text-gray-400 mb-5">Join 15,000+ traders getting weekly prop firm discounts.</p>
+                    <button className="w-full py-3 text-sm font-bold text-white bg-primary rounded-xl hover:bg-primary/80 transition-colors shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 duration-200">Subscribe Free</button>
+                  </div>
                 </div>
               </aside>
 
@@ -274,53 +280,78 @@ const BrowseFirmsPage: React.FC = () => {
               <div className="flex-1 flex flex-col min-w-0">
 
                 {/* Controls Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6 bg-brand-charcoal/50 p-3 rounded-xl border border-brand-border">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-brand-muted">Showing <span className="text-white font-bold">{filteredFirms.length}</span> Firms</span>
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-8 bg-[#0f0b1e]/80 backdrop-blur-md p-4 rounded-2xl border border-white/5 shadow-xl">
+                  <div className="flex items-center gap-2 px-2">
+                    <span className="text-sm text-gray-400">Found <span className="text-primary font-bold text-base px-1">{filteredFirms.length}</span> verified match{filteredFirms.length !== 1 && 'es'}</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
-                      <label className="text-xs font-medium text-brand-muted hidden sm:block">Sort by:</label>
-                      <select className="bg-brand-black border border-brand-border text-white text-sm rounded-lg focus:ring-brand-gold focus:border-brand-gold block p-2 cursor-pointer">
-                        <option>Highest Rated</option>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest hidden sm:block">Sort</span>
+                      <select className="bg-dark border border-white/10 text-white text-sm rounded-xl focus:ring-primary focus:border-primary block p-2.5 cursor-pointer outline-none shadow-inner">
+                        <option>Highest Trust Score</option>
                         <option>Lowest Price</option>
-                        <option>Newest Added</option>
-                        <option>Max Funding</option>
+                        <option>Highest Max Funding</option>
+                        <option>Fastest Payouts</option>
                       </select>
                     </div>
-                    <div className="h-6 w-px bg-brand-border mx-1"></div>
-                    <button className="p-2 text-brand-gold hover:bg-white/5 rounded-lg transition-colors">
-                      <span className="material-symbols-outlined text-[20px]">grid_view</span>
-                    </button>
-                    <button className="p-2 text-brand-muted hover:bg-white/5 rounded-lg transition-colors">
-                      <span className="material-symbols-outlined text-[20px]">view_list</span>
-                    </button>
+                    <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
+                    <div className="flex bg-dark border border-white/10 rounded-xl p-1 shadow-inner">
+                      <button
+                        onClick={() => setViewMode('grid')}
+                        className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+                      >
+                        <LayoutGrid className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => setViewMode('list')}
+                        className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+                      >
+                        <List className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {filteredFirms.map((firm) => (
-                    <FirmCard key={firm.id} firm={firm} />
-                  ))}
-                </div>
-
-                {/* Pagination */}
-                <div className="mt-12 flex justify-center">
-                  <div className="flex items-center justify-center p-4 gap-2">
-                    <a className="flex size-10 items-center justify-center rounded-lg hover:bg-brand-charcoal transition-colors cursor-pointer">
-                      <span className="material-symbols-outlined text-white text-[18px]">chevron_left</span>
-                    </a>
-                    <a className="text-sm font-bold flex size-10 items-center justify-center text-brand-black rounded-lg bg-brand-gold cursor-pointer">1</a>
-                    <a className="text-sm font-medium flex size-10 items-center justify-center text-brand-muted hover:text-white hover:bg-brand-charcoal rounded-lg transition-colors cursor-pointer">2</a>
-                    <a className="text-sm font-medium flex size-10 items-center justify-center text-brand-muted hover:text-white hover:bg-brand-charcoal rounded-lg transition-colors cursor-pointer">3</a>
-                    <span className="flex size-10 items-center justify-center text-brand-muted">...</span>
-                    <a className="text-sm font-medium flex size-10 items-center justify-center text-brand-muted hover:text-white hover:bg-brand-charcoal rounded-lg transition-colors cursor-pointer">8</a>
-                    <a className="flex size-10 items-center justify-center rounded-lg hover:bg-brand-charcoal transition-colors cursor-pointer">
-                      <span className="material-symbols-outlined text-white text-[18px]">chevron_right</span>
-                    </a>
+                {/* Empty State */}
+                {filteredFirms.length === 0 && (
+                  <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 rounded-3xl bg-[#0f0b1e]/50 backdrop-blur-sm">
+                    <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6">
+                      <Search className="w-10 h-10 text-gray-500" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">No perfect match found</h3>
+                    <p className="text-gray-400 max-w-md">Try adjusting your filters (profit split or drawdown requirements) to discover more proprietary trading firms.</p>
+                    <button
+                      onClick={() => { setSearchTerm(''); setProfitSplit(80); setMaxDrawdown(10); setMinRating(4); setSelectedAccountType(null); }}
+                      className="mt-8 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium transition-colors border border-white/10"
+                    >
+                      Clear All Filters
+                    </button>
                   </div>
-                </div>
+                )}
+
+                {/* Grid */}
+                {filteredFirms.length > 0 && (
+                  <div className={`grid gap-6 ${viewMode === 'list' ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'}`}>
+                    {filteredFirms.map((firm) => (
+                      <FirmCard
+                        key={firm.id}
+                        firm={firm}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Load More */}
+                {filteredFirms.length > 0 && (
+                  <div className="mt-12 text-center">
+                    <button className="px-8 py-3 bg-[#0f0b1e] hover:bg-white/5 border border-white/10 text-white rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group">
+                      <span className="flex items-center gap-2">
+                        Load More Matches
+                        <Zap className="w-4 h-4 text-primary group-hover:fill-primary transition-all" />
+                      </span>
+                    </button>
+                  </div>
+                )}
 
               </div>
             </div>
