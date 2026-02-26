@@ -527,7 +527,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
                         <span className="text-white font-bold text-xl">{account.price}</span>
                       </td>
                       <td className="px-8 py-6 text-right">
-                        <a href={firm.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-purple-500 hover:from-primary hover:to-purple-400 text-white text-[15px] font-bold shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30">
+                        <a href={firm.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-purple-500 hover:from-primary hover:to-purple-400 text-white text-[15px] font-bold shadow-[0_0_20px_rgba(246, 174, 19,0.3)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30">
                           Buy
                         </a>
                       </td>
@@ -698,7 +698,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
               <span className="text-gray-500 text-sm">Based on {firm.totalReviews.toLocaleString()} verified reviews</span>
             </div>
           </div>
-          <button className="btn-primary px-8 py-3 rounded-full text-sm font-bold text-white shadow-lg hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] transition-all flex items-center space-x-2">
+          <button className="btn-primary px-8 py-3 rounded-full text-sm font-bold text-white shadow-lg hover:shadow-[0_0_30px_rgba(246, 174, 19,0.4)] transition-all flex items-center space-x-2">
             <span>Write a Review</span>
             <ExternalLink className="w-4 h-4 ml-1" />
           </button>

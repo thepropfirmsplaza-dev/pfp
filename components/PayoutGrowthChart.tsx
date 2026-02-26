@@ -82,7 +82,7 @@ export const PayoutGrowthChart: React.FC<PayoutGrowthChartProps> = ({ activeFirm
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(15, 10, 30, 0.9)',
-                borderColor: 'rgba(124, 58, 237, 0.3)',
+                borderColor: 'rgba(246, 174, 19, 0.3)',
                 textStyle: { color: '#fff' },
                 padding: [12, 16],
                 borderRadius: 12,

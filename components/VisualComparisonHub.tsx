@@ -3,14 +3,15 @@ import { Firm } from '../types';
 import { X, CheckCircle, TrendingUp, Shield, Zap, Target, Clock, AlertTriangle, Layers, ChevronRight, SlidersHorizontal, Monitor, Calendar, CreditCard, Award } from 'lucide-react';
 import { PayoutGrowthChart } from './PayoutGrowthChart';
 import { FirmDNARadar } from './FirmDNARadar';
+import { useComparison } from '../context/ComparisonContext';
+import { useNavigate } from 'react-router-dom';
 
-interface VisualComparisonHubProps {
-    firms: Firm[];
-    onRemove: (id: string) => void;
-    onExplore: () => void;
-}
+interface VisualComparisonHubProps { }
 
-export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = ({ firms, onRemove, onExplore }) => {
+export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = () => {
+    const { selectedFirms: firms, removeFirm: onRemove } = useComparison();
+    const navigate = useNavigate();
+    const onExplore = () => navigate('/firms');
     const [timeRange, setTimeRange] = useState<'12m' | '6m' | '30d' | '7d'>('12m');
 
     if (firms.length === 0) {
@@ -37,7 +38,7 @@ export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = ({ firms,
         <div className="w-full relative min-h-screen rounded-[2rem] bg-[#0F0A1E] text-white border border-white/5 overflow-hidden pt-24 pb-12">
             {/* Dynamic Canvas Background */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-[radial-gradient(ellipse_at_top,rgba(124,58,237,0.05),transparent_70%)]"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-[radial-gradient(ellipse_at_top,rgba(246, 174, 19,0.05),transparent_70%)]"></div>
                 {/* Subtle Horizontal Grid lines */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_40px]"></div>
             </div>
@@ -50,7 +51,7 @@ export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = ({ firms,
                 <div className="flex items-center space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
                     <span className="text-xs font-mono text-gray-400 mr-2 uppercase tracking-wide whitespace-nowrap">{firms.length}/5 Selected</span>
                     {firms.map(firm => (
-                        <div key={firm.id} className="group relative flex items-center space-x-2 bg-white/[0.05] border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap overflow-hidden transition-all hover:-translate-y-0.5" style={{ borderColor: 'rgba(124,58,237,0.3)' }}>
+                        <div key={firm.id} className="group relative flex items-center space-x-2 bg-white/[0.05] border border-white/10 px-3 py-1.5 rounded-full whitespace-nowrap overflow-hidden transition-all hover:-translate-y-0.5" style={{ borderColor: 'rgba(246, 174, 19,0.3)' }}>
                             <div className="absolute inset-0 opacity-10" style={{ backgroundColor: '#7C3AED' }}></div>
                             <img src={firm.logo} alt={firm.name} className="w-4 h-4 rounded-full" />
                             <span className="text-sm font-bold relative z-10">{firm.name}</span>

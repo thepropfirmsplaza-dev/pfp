@@ -109,14 +109,14 @@ export const Hero: React.FC<HeroProps> = ({ onStartQuiz, onExplore }) => {
         }
         @keyframes float-3d { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         .text-gradient-premium {
-            background: linear-gradient(to right, #ffffff, #a78bfa, #8b5cf6);
+            background: linear-gradient(to right, #ffffff, #A78BFA, #8B5CF6);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .glass-floating-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(246, 174, 19, 0.25);
             animation: float-card 8s ease-in-out infinite;
         }
         @keyframes float-card { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }

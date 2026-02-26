@@ -1,0 +1,6 @@
+components/ComparisonFloatingBar.tsx(5,22): error TS2307: Cannot find module './FirmLogo' or its corresponding type declarations.
+context/ComparisonContext.tsx(2,10): error TS2305: Module '"../types"' has no exported member 'PropFirm'.
+pages/admin/AdminOffersPage.tsx(197,26): error TS2552: Cannot find name 'Filter'. Did you mean 'File'?
+pages/CompetitionDetailPage.tsx(6,20): error TS2307: Cannot find module '../components/Navbar' or its corresponding type declarations.
+pages/CompetitionDetailPage.tsx(7,20): error TS2307: Cannot find module '../components/Footer' or its corresponding type declarations.
+public/prop-match-spot/pages/admin/AdminOffersPage.tsx(197,26): error TS2304: Cannot find name 'Filter'.
