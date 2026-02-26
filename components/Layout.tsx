@@ -1,23 +1,26 @@
 import React from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { NAV_ITEMS } from '../constants';
 import { ViewState } from '../types';
 import { Hexagon, User, Menu, X } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
-  currentView: ViewState;
-  setView: (view: ViewState) => void;
+  activeView?: string;
+  onViewChange?: (view: string) => void;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView }) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="min-h-screen bg-dark text-white flex flex-col font-sans selection:bg-primary/30">
       {/* Header - Floating & Rounded */}
       <header className="fixed top-4 left-4 right-4 md:left-8 md:right-8 lg:left-0 lg:right-0 lg:max-w-7xl lg:mx-auto z-50 rounded-2xl border border-white/10 bg-dark/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300">
         <div className="px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center cursor-pointer group" onClick={() => setView('home')}>
+          <div className="flex items-center cursor-pointer group" onClick={() => navigate('/')}>
             <div className="relative mr-3">
               <div className="absolute inset-0 bg-primary/40 blur-md rounded-lg group-hover:bg-primary/60 transition-colors"></div>
               <div className="bg-dark-mid p-2 rounded-lg relative border border-white/10">
@@ -33,17 +36,17 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView }
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
-                onClick={() => setView(item.id as ViewState)}
-                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group overflow-hidden ${currentView === item.id
-                    ? 'text-white'
-                    : 'text-text-muted hover:text-white'
+                onClick={() => navigate(item.path)}
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group overflow-hidden ${location.pathname.startsWith(item.path)
+                  ? 'text-white'
+                  : 'text-text-muted hover:text-white'
                   }`}
               >
-                {currentView === item.id && (
+                {location.pathname.startsWith(item.path) && (
                   <span className="absolute inset-0 bg-white/5 border border-white/5 rounded-full" />
                 )}
                 <span className="relative z-10 flex items-center space-x-2">
-                  <item.icon className={`w-4 h-4 transition-colors ${currentView === item.id ? 'text-primary' : 'text-text-muted group-hover:text-primary'}`} />
+                  <item.icon className={`w-4 h-4 transition-colors ${location.pathname.startsWith(item.path) ? 'text-primary' : 'text-text-muted group-hover:text-primary'}`} />
                   <span>{item.label}</span>
                 </span>
               </button>
@@ -51,8 +54,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView }
           </nav>
 
           <div className="flex items-center space-x-4">
-            <button className="hidden sm:block text-sm font-medium text-text-muted hover:text-white transition-colors">Log In</button>
-            <button className="btn-primary text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transition-all border border-white/10 transform hover:scale-105">
+            <button onClick={() => navigate('/login')} className="hidden sm:block text-sm font-medium text-text-muted hover:text-white transition-colors">Log In</button>
+            <button onClick={() => navigate('/firms')} className="btn-primary text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] transition-all border border-white/10 transform hover:scale-105">
               Get Funded
             </button>
             <button className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -68,15 +71,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView }
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => { setView(item.id as ViewState); setIsMobileMenuOpen(false); }}
-                  className={`flex items-center space-x-3 text-sm font-medium p-3 rounded-xl transition-colors ${currentView === item.id ? 'bg-primary/10 text-white' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
+                  onClick={() => { navigate(item.path); setIsMobileMenuOpen(false); }}
+                  className={`flex items-center space-x-3 text-sm font-medium p-3 rounded-xl transition-colors ${location.pathname.startsWith(item.path) ? 'bg-primary/10 text-white' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
                 >
-                  <item.icon className={`w-5 h-5 ${currentView === item.id ? 'text-primary' : 'text-text-muted'}`} />
+                  <item.icon className={`w-5 h-5 ${location.pathname.startsWith(item.path) ? 'text-primary' : 'text-text-muted'}`} />
                   <span>{item.label}</span>
                 </button>
               ))}
               <div className="h-px bg-white/10 my-2"></div>
-              <button className="flex items-center space-x-3 text-sm font-medium text-text-muted hover:text-white p-3 rounded-xl hover:bg-white/5">
+              <button onClick={() => { navigate('/login'); setIsMobileMenuOpen(false); }} className="flex items-center space-x-3 text-sm font-medium text-text-muted hover:text-white p-3 rounded-xl hover:bg-white/5">
                 <User className="w-5 h-5" />
                 <span>Log In</span>
               </button>
