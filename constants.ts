@@ -1,5 +1,5 @@
 import { Firm } from './types';
-import { BadgeDollarSign, Zap, ShieldCheck, TrendingUp, Trophy, Globe, GraduationCap } from 'lucide-react';
+import { BadgeDollarSign, Zap, ShieldCheck, TrendingUp, Trophy, Globe, GraduationCap, Gift } from 'lucide-react';
 
 // Import Firm Logos
 import logoFtmo from './assets/hero-logos/firm-ftmo.png';
@@ -130,6 +130,7 @@ export const NAV_ITEMS = [
   { id: 'discovery', label: 'Firms', icon: Globe, path: '/firms' },
   { id: 'compare', label: 'Compare', icon: TrendingUp, path: '/compare' },
   { id: 'competitions', label: 'Competitions', icon: Trophy, path: '/competitions' },
+  { id: 'offers', label: 'Offers', icon: Gift, path: '/offers' },
   { id: 'quiz', label: 'Match AI', icon: Zap, path: '/quiz' },
   { id: 'dashboard', label: 'Dashboard', icon: ShieldCheck, path: '/dashboard' },
 ];

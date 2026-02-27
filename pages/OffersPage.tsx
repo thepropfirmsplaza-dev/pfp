@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabaseClient';
 import { useModal } from '../context/ModalContext';
-import { Loader2 } from 'lucide-react';
+import { Loader2, CheckCircle, Sparkles, Clock, Trophy, ExternalLink, Copy } from 'lucide-react';
 
 interface Offer {
   id: string;
@@ -102,38 +102,41 @@ const OffersPage: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="flex flex-col gap-2">
             <h2 className="text-white text-3xl md:text-4xl font-black tracking-tight">Exclusive Prop Firm Deals</h2>
-            <p className="text-brand-muted text-base">Verified discounts for premium trading accounts.</p>
+            <p className="text-gray-400 text-base">Verified discounts for premium trading accounts.</p>
           </div>
-          <div className="flex items-center gap-2 text-sm text-brand-gold bg-brand-gold/10 px-3 py-1.5 rounded-full border border-brand-gold/20">
-            <span className="material-symbols-outlined text-[18px]">verified</span>
+          <div className="flex items-center gap-2 text-sm text-green-400 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">
+            <CheckCircle className="w-4 h-4" />
             <span className="font-medium">{offers.filter(o => o.verified).length} Active Offers Verified Today</span>
           </div>
         </div>
 
         {/* Featured Hero Card (Static for now, could be dynamic later) */}
-        <div className="rounded-xl border border-brand-gold/30 bg-gradient-to-r from-brand-charcoal via-[#2a2212] to-brand-charcoal p-6 md:p-8 relative overflow-hidden group shadow-lg shadow-black/50">
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-gold/10 blur-[80px] pointer-events-none"></div>
+        <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-primary/20 via-[#1a142c] to-violet-900/20 p-6 md:p-8 relative overflow-hidden group shadow-[0_0_40px_-15px_rgba(139,92,246,0.25)] hover:shadow-[0_0_60px_-15px_rgba(139,92,246,0.4)] transition-all duration-500">
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-[80px] pointer-events-none"></div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
             <div className="flex flex-col gap-4 max-w-2xl">
               <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-gold text-brand-black uppercase tracking-wider">Deal of the Month</span>
-                <span className="text-brand-muted text-sm flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">timer</span> Limited Time
+                <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-primary text-white uppercase tracking-wider flex items-center gap-1.5">
+                  <Sparkles size={12} /> Deal of the Month
+                </span>
+                <span className="text-primary text-sm flex items-center gap-1 font-medium bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+                  <Clock size={14} /> Limited Time
                 </span>
               </div>
               <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">
-                <span className="text-brand-gold">Save Big</span> on Top Firms
+                <span className="bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">Save Big</span> on Top Firms
               </h3>
-              <p className="text-brand-muted text-lg">Check out our verified list of prop firm coupons below.</p>
+              <p className="text-gray-400 text-lg">Check out our verified list of prop firm coupons below.</p>
             </div>
           </div>
         </div>
 
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-3">
-          <button className="flex h-9 items-center gap-2 rounded-lg bg-brand-gold/10 border border-brand-gold/20 px-4 transition-colors hover:bg-brand-gold/20">
-            <span className="text-sm font-medium text-brand-gold">All Offers</span>
+          <button className="flex h-10 items-center justify-center gap-2 rounded-xl bg-primary shadow-lg shadow-primary/25 border border-primary/50 px-6 transition-all hover:bg-primary/90">
+            <Trophy size={16} className="text-white" />
+            <span className="text-sm font-bold text-white">All Offers</span>
           </button>
         </div>
 
@@ -146,41 +149,43 @@ const OffersPage: React.FC = () => {
             </div>
           ) : offers.length > 0 ? (
             offers.map((offer) => (
-              <div key={offer.id} className="group flex flex-col justify-between gap-4 rounded-xl border border-brand-border bg-brand-charcoal p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-gold/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+              <div key={offer.id} className="group flex flex-col justify-between gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_10px_40px_-10px_rgba(139,92,246,0.3)] hover:bg-white/[0.04]">
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="h-12 w-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 overflow-hidden">
+                      <div className="h-12 w-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 overflow-hidden shadow-inner font-bold text-white text-xs">
                         {offer.firms?.logo_url ? (
-                          <img src={offer.firms.logo_url} alt={offer.firms.name} className="w-full h-full object-contain p-1" />
+                          <img src={offer.firms.logo_url} alt={offer.firms.name} className="w-full h-full object-contain p-2" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                         ) : (
-                          <div className="font-bold text-white text-xs">{offer.firms?.name?.substring(0, 2)}</div>
+                          <span className="flex items-center justify-center w-full h-full">{offer.firms?.name?.substring(0, 2)}</span>
                         )}
                       </div>
                       <div>
-                        <h4 className="text-white font-bold text-lg leading-tight">{offer.firms?.name || 'Unknown Firm'}</h4>
-                        <p className="text-xs text-brand-muted">Prop Firm</p>
+                        <h4 className="text-white font-bold text-lg leading-tight group-hover:text-primary transition-colors">{offer.firms?.name || 'Unknown Firm'}</h4>
+                        <p className="text-xs text-gray-500">Prop Firm</p>
                       </div>
                     </div>
                     {offer.verified && (
-                      <span className="px-2 py-1 rounded bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wide border border-green-500/20">Verified</span>
+                      <span className="px-2 py-1.5 rounded-md bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-widest border border-green-500/20 flex items-center gap-1">
+                        <CheckCircle size={10} /> Verified
+                      </span>
                     )}
                   </div>
                   <div className="flex flex-col gap-1 mb-4">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-black text-white group-hover:text-brand-gold transition-colors">{offer.discount || 'Special Deal'}</span>
+                      <span className="text-4xl font-black text-white group-hover:text-primary transition-colors drop-shadow-md">{offer.discount || 'Special Deal'}</span>
                     </div>
-                    <p className="text-sm text-brand-muted">{offer.title}</p>
+                    <p className="text-sm text-gray-400 leading-relaxed max-w-[90%]">{offer.title}</p>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3">
-                  <div className="flex justify-between items-center text-xs text-brand-muted border-t border-brand-border pt-3">
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-between items-center text-xs text-gray-500 border-t border-white/[0.06] pt-4">
                     {offer.expiry_date ? (
-                      <span className="flex items-center gap-1">
-                        <span className="material-symbols-outlined text-[14px]">calendar_month</span> Valid until {new Date(offer.expiry_date).toLocaleDateString()}
+                      <span className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.03] border border-white/[0.05]">
+                        <Clock size={12} className="text-primary" /> Valid until {new Date(offer.expiry_date).toLocaleDateString()}
                       </span>
                     ) : (
-                      <span className="text-brand-muted/50">No expiration date</span>
+                      <span className="text-gray-600 italic">No expiration date</span>
                     )}
                   </div>
                   <div className="flex gap-2">
@@ -188,21 +193,18 @@ const OffersPage: React.FC = () => {
                       href={offer.firms?.affiliate_link || offer.firms?.website || '#'}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 bg-white hover:bg-gray-200 text-black font-bold py-2.5 rounded-lg text-sm transition-colors text-center"
+                      className="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl text-sm transition-all text-center shadow-lg shadow-primary/20 hover:shadow-primary/40 flex items-center justify-center gap-2"
                     >
-                      Claim Offer
+                      Claim Offer <ExternalLink size={14} />
                     </a>
                     {offer.code && (
                       <button
-                        className="px-3 rounded-lg border border-brand-border bg-brand-black text-brand-muted hover:text-white hover:border-brand-gold/50 transition-colors flex items-center justify-center group/copy"
+                        className="px-4 rounded-xl border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all flex items-center justify-center group/copy"
                         title="Copy Code"
-                        onClick={() => {
-                          navigator.clipboard.writeText(offer.code || '');
-                          alert('Code copied!');
-                        }}
+                        onClick={() => copyCode(offer.code || '')}
                       >
-                        <span className="material-symbols-outlined text-[18px]">content_copy</span>
-                        <div className="hidden group-hover/copy:block absolute bottom-full mb-2 bg-black text-white text-xs px-2 py-1 rounded">Copy</div>
+                        <Copy size={18} className="group-hover/copy:scale-110 transition-transform" />
+                        <div className="hidden group-hover/copy:block absolute bottom-full mb-2 bg-black text-white text-xs px-2 py-1 rounded shadow-xl whitespace-nowrap">Copy Code</div>
                       </button>
                     )}
                   </div>
@@ -210,9 +212,10 @@ const OffersPage: React.FC = () => {
               </div>
             ))
           ) : (
-            <div className="col-span-full py-20 text-center">
-              <h3 className="text-xl font-bold text-white mb-2">No Active Offers</h3>
-              <p className="text-brand-muted">Check back later for new deals or add some in the Admin Dashboard.</p>
+            <div className="col-span-full py-20 text-center bg-white/[0.02] border border-white/[0.05] rounded-3xl backdrop-blur-sm">
+              <Trophy size={48} className="mx-auto mb-4 text-primary/30" />
+              <h3 className="text-2xl font-bold text-white mb-2">No Active Offers Found</h3>
+              <p className="text-gray-500">Check back later for new deals or add some in the Admin Dashboard.</p>
             </div>
           )}
         </div>
