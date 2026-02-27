@@ -208,9 +208,9 @@ const ComparePage: React.FC = () => {
                         {slots[i] ? (
                           <div className="flex items-center justify-center gap-2">
                             <div className="h-2 w-16 bg-brand-black rounded-full overflow-hidden">
-                              <div className="h-full bg-green-500" style={{ width: `${slots[i]?.trustScore || 80}%` }}></div>
+                              <div className="h-full bg-green-500" style={{ width: `${((slots[i]?.trustScore || 0) / 5) * 100}%` }}></div>
                             </div>
-                            <span className="font-bold text-white">{slots[i]?.trustScore || 0}/100</span>
+                            <span className="font-bold text-white">{slots[i]?.trustScore || 0}/5</span>
                           </div>
                         ) : <span className="text-brand-muted/30">--</span>}
                       </td>
