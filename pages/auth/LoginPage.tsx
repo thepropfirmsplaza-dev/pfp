@@ -25,7 +25,7 @@ const LoginPage = () => {
 
             // Check if admin and redirect accordingly
             const emailLower = data.user?.email?.toLowerCase();
-            if (emailLower === 'admin@thecapitalmatch.com' || emailLower === 'admin@capitalmatch.io' || emailLower === 'capitalmatch@gmail.com') {
+            if (emailLower === 'admin@thecapitalmatch.com' || emailLower === 'admin@capitalmatch.io' || emailLower === 'capitalmatch@gmail.com' || emailLower === 'thecapitalmatch@gmail.com') {
                 navigate('/admin');
             } else {
                 // Also check database role just in case

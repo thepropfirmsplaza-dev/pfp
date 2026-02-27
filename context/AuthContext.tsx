@@ -75,7 +75,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         // 1. PRIORITY: Hardcoded admin check (Bypasses DB for critical access)
         const emailLower = user.email?.toLowerCase();
-        if (emailLower === 'admin@thecapitalmatch.com') {
+        const adminEmails = [
+            'admin@thecapitalmatch.com',
+            'admin@capitalmatch.io',
+            'capitalmatch@gmail.com',
+            'thecapitalmatch@gmail.com',
+        ];
+        if (emailLower && adminEmails.includes(emailLower)) {
             console.log("Admin access granted via hardcoded whitelist:", emailLower);
             setIsAdmin(true);
             return;
@@ -89,7 +95,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 .eq('id', user.id)
                 .single();
 
-            if (data && data.role === 'admin') {
+            if (!error && data && data.role === 'admin') {
                 setIsAdmin(true);
             } else {
                 setIsAdmin(false);
