@@ -14,9 +14,9 @@ const STEPS = [
         icon: TrendingUp,
         title: "2. Pass the Evaluation",
         description: "Prove your skills by hitting the firm's profit targets without breaching their drawdown rules. Trade your strategy on your terms.",
-        color: "from-purple-500/20 to-purple-500/5",
-        iconColor: "text-purple-400",
-        borderColor: "border-purple-500/20"
+        color: "from-accent/20 to-accent/5",
+        iconColor: "text-accent",
+        borderColor: "border-accent/20"
     },
     {
         icon: DollarSign,
@@ -41,7 +41,7 @@ export const HowItWorks: React.FC<{ onStartQuiz: () => void }> = ({ onStartQuiz 
                 {/* Header */}
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                        Your Path to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-400 to-primary">Funded Excellence</span>
+                        Your Path to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Funded Excellence</span>
                     </h2>
                     <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
                         We simplify the complex world of proprietary trading. From finding your perfect match to securing your first six-figure payout.
@@ -51,7 +51,7 @@ export const HowItWorks: React.FC<{ onStartQuiz: () => void }> = ({ onStartQuiz 
                 {/* Steps Grid */}
                 <div className="relative">
                     {/* Connecting Line (Desktop Only) */}
-                    <div className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-secondary/20 via-purple-500/20 to-primary/20 -translate-y-1/2 z-0"></div>
+                    <div className="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-secondary/20 via-accent/20 to-primary/20 -translate-y-1/2 z-0"></div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
                         {STEPS.map((step, index) => (

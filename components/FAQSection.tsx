@@ -57,12 +57,12 @@ export const FAQSection: React.FC = () => {
 
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-1.5 mb-6">
-                        <MessageCircleQuestion className="w-4 h-4 text-purple-400" />
-                        <span className="text-xs font-semibold text-purple-400 uppercase tracking-wider">Got Questions?</span>
+                    <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 mb-6">
+                        <MessageCircleQuestion className="w-4 h-4 text-accent" />
+                        <span className="text-xs font-semibold text-accent uppercase tracking-wider">Got Questions?</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-400 to-primary">Questions</span>
+                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Questions</span>
                     </h2>
                     <p className="text-gray-400 text-lg font-light leading-relaxed">
                         Everything you need to know about prop trading and finding the right firm.
@@ -78,7 +78,7 @@ export const FAQSection: React.FC = () => {
                             <div
                                 key={index}
                                 className={`group border rounded-2xl transition-all duration-300 overflow-hidden ${isOpen
-                                        ? 'bg-white/[0.04] border-primary/30 shadow-[0_0_30px_rgba(124,58,237,0.1)]'
+                                        ? 'bg-white/[0.04] border-primary/30 shadow-[0_0_30px_rgba(10,193,201,)]'
                                         : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
                                     }`}
                             >

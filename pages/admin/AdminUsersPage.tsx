@@ -138,7 +138,7 @@ const AdminUsersPage: React.FC = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium border ${user.role === 'admin'
-                                                ? 'bg-purple-500/10 text-purple-500 border-purple-500/20'
+                                                ? 'bg-accent/10 text-accent border-accent/20'
                                                 : 'bg-brand-black border-brand-border text-brand-muted'
                                                 }`}>
                                                 {user.role === 'admin' && <Shield size={10} />}

@@ -447,7 +447,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
           {[
             { icon: DollarSign, label: 'Profit Split', value: firm.profitSplit, color: 'text-green-400' },
             { icon: Clock, label: 'Payout Speed', value: firm.payoutTime, color: 'text-blue-400' },
-            { icon: Target, label: 'Max Account', value: firm.maxAccountSize, color: 'text-purple-400' },
+            { icon: Target, label: 'Max Account', value: firm.maxAccountSize, color: 'text-accent' },
             { icon: TrendingUp, label: 'From', value: firm.startingPrice, color: 'text-yellow-400' },
           ].map((stat, idx) => (
             <div key={idx} className="bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.06] rounded-2xl p-5 text-center hover:border-white/10 transition-colors">
@@ -527,7 +527,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
                         <span className="text-white font-bold text-xl">{account.price}</span>
                       </td>
                       <td className="px-8 py-6 text-right">
-                        <a href={firm.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-purple-500 hover:from-primary hover:to-purple-400 text-white text-[15px] font-bold shadow-[0_0_20px_rgba(246, 174, 19,0.3)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30">
+                        <a href={firm.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent text-white text-[15px] font-bold shadow-[0_0_20px_rgba(246, 174, 19,0.3)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30">
                           Buy
                         </a>
                       </td>
@@ -557,7 +557,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
                   { label: 'Daily Drawdown', value: firm.dailyDrawdown, icon: AlertTriangle, color: 'text-orange-400' },
                   { label: 'Profit Target', value: firm.profitTarget, icon: Target, color: 'text-green-400' },
                   { label: 'Min Trading Days', value: firm.minTradingDays, icon: Timer, color: 'text-blue-400' },
-                  { label: 'Max Duration', value: firm.maxTradingPeriod, icon: Clock, color: 'text-purple-400' },
+                  { label: 'Max Duration', value: firm.maxTradingPeriod, icon: Clock, color: 'text-accent' },
                   { label: 'Leverage', value: firm.leverage, icon: Layers, color: 'text-cyan-400' },
                 ].map((rule, idx) => (
                   <div key={idx} className="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
@@ -719,7 +719,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center font-bold text-white text-lg border border-white/[0.08]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center font-bold text-white text-lg border border-white/[0.08]">
                       {review.user.charAt(0)}
                     </div>
                     <div>

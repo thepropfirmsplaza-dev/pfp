@@ -134,7 +134,7 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
                         <span className="text-xs font-semibold text-primary uppercase tracking-wider">Verified & Trusted</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        Featured Prop <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-400 to-primary">Firms</span>
+                        Featured Prop <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Firms</span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
                         Handpicked and verified prop trading firms trusted by thousands of traders worldwide.
@@ -260,7 +260,7 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
                 <div className="text-center mt-14">
                     <button
                         onClick={() => navigate('/firms')}
-                        className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-purple-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] transition-all duration-300 hover:scale-105 border border-white/10"
+                        className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-bold text-sm shadow-[0_0_30px_rgba(10,193,201,)] hover:shadow-[0_0_40px_rgba(10,193,201,)] transition-all duration-300 hover:scale-105 border border-white/10"
                     >
                         <span>Explore All Firms</span>
                         <ArrowRight className="w-5 h-5" />

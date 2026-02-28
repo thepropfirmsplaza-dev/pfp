@@ -108,7 +108,7 @@ const BrowseFirmsPage: React.FC = () => {
                   </div>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
                     {dynamicTitle.replace(dynamicTitle.split(' ').pop() || '', '')}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">{dynamicTitle.split(' ').pop()}</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{dynamicTitle.split(' ').pop()}</span>
                   </h1>
                   <p className="text-gray-400 text-lg md:text-xl font-light">Compare, review, and discover the world's leading proprietary trading firms designed for professional traders.</p>
                 </div>
@@ -161,7 +161,7 @@ const BrowseFirmsPage: React.FC = () => {
                         key={type}
                         onClick={() => setSelectedAccountType(selectedAccountType === type ? null : type)}
                         className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${selectedAccountType === type
-                          ? 'bg-primary text-white border-primary shadow-[0_0_15px_rgba(124,58,237,0.4)]'
+                          ? 'bg-primary text-white border-primary shadow-[0_0_15px_rgba(10,193,201,)]'
                           : 'bg-[#0f0b1e] text-gray-400 border-white/10 hover:border-primary/50 hover:text-white'
                           }`}
                       >

@@ -175,21 +175,21 @@ const CompetitionsPage = () => {
     return (
         <div className="min-h-screen bg-dark pt-36 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Background Effects */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[5%] left-[15%] w-[35%] h-[35%] bg-primary/8 rounded-full blur-[120px] animate-pulse"></div>
-                <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-violet-500/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '3s' }}></div>
-                <div className="absolute top-[50%] left-[50%] w-[20%] h-[20%] bg-blue-500/5 rounded-full blur-[100px]"></div>
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-[20%] left-[10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse"></div>
+                <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-accent/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '3s' }}></div>
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Hero Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                        <Sparkles size={14} />
-                        Compete & Win Funded Accounts
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-semibold mb-8">
+                        <Trophy size={16} /> Elite Trading Tournaments
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                        Trading <span className="bg-gradient-to-r from-primary via-violet-400 to-purple-400 bg-clip-text text-transparent">Competitions</span>
+
+                    <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+                        Prove Your Edge in Global <br className="hidden md:block" />
+                        Trading <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Competitions</span>
                     </h1>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
                         Test your skills against the best traders worldwide. Win funded accounts,
@@ -243,7 +243,7 @@ const CompetitionsPage = () => {
                     const featured = filteredCompetitions.find(c => c.status === 'active') || filteredCompetitions[0];
                     return (
                         <div className="mb-12 group">
-                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-violet-500/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(139,92,246,0.3)]">
+                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(10,193,201,0.3)]">
                                 <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
@@ -282,7 +282,7 @@ const CompetitionsPage = () => {
                                                 </div>
                                                 <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                                                     <div
-                                                        className="h-full bg-gradient-to-r from-primary to-violet-400 rounded-full transition-all duration-1000"
+                                                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000"
                                                         style={{ width: `${getProgressPercentage(featured.participants, featured.max_participants)}%` }}
                                                     ></div>
                                                 </div>
@@ -324,11 +324,11 @@ const CompetitionsPage = () => {
                         {filteredCompetitions.map((comp, index) => (
                             <div
                                 key={comp.id}
-                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(139,92,246,0.25)] flex flex-col h-full"
+                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(10,193,201,0.25)] flex flex-col h-full"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 {/* Image Banner */}
-                                <div className="h-48 bg-gradient-to-br from-primary/5 to-violet-900/10 relative overflow-hidden p-6 flex items-center justify-center">
+                                <div className="h-48 bg-gradient-to-br from-primary/5 to-accent/10 relative overflow-hidden p-6 flex items-center justify-center">
                                     <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
                                     <img
                                         src={comp.image_url || 'https://placehold.co/150/0f0b1e/8B5CF6?text=CM'}
@@ -340,10 +340,10 @@ const CompetitionsPage = () => {
                                     {/* Status Badge */}
                                     <div className="absolute top-4 right-4 z-20">
                                         <span className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${comp.status === 'active'
-                                                ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                                                : comp.status === 'upcoming'
-                                                    ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                                                    : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
+                                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                                            : comp.status === 'upcoming'
+                                                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                                : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
                                             }`}>
                                             {comp.status === 'active' && <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>}
                                             {comp.status}
@@ -353,8 +353,8 @@ const CompetitionsPage = () => {
                                     {/* Entry Fee badge */}
                                     <div className="absolute top-4 left-4 z-20">
                                         <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${comp.entry_fee === 'FREE'
-                                                ? 'bg-primary/20 text-primary border border-primary/30'
-                                                : 'bg-white/10 text-white border border-white/10'
+                                            ? 'bg-primary/20 text-primary border border-primary/30'
+                                            : 'bg-white/10 text-white border border-white/10'
                                             }`}>
                                             {comp.entry_fee === 'FREE' ? '✨ FREE ENTRY' : comp.entry_fee}
                                         </span>
@@ -396,7 +396,7 @@ const CompetitionsPage = () => {
                                             </div>
                                             <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                                                 <div
-                                                    className="h-full bg-gradient-to-r from-primary to-violet-400 rounded-full"
+                                                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
                                                     style={{ width: `${getProgressPercentage(comp.participants, comp.max_participants)}%` }}
                                                 ></div>
                                             </div>
@@ -432,7 +432,7 @@ const CompetitionsPage = () => {
 
                 {/* Bottom CTA */}
                 <div className="mt-16 text-center">
-                    <div className="inline-block bg-gradient-to-r from-primary/10 via-white/[0.02] to-violet-500/10 border border-primary/20 rounded-2xl px-10 py-8">
+                    <div className="inline-block bg-gradient-to-r from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-2xl px-10 py-8">
                         <h3 className="text-2xl font-bold text-white mb-2">Want to host a competition?</h3>
                         <p className="text-gray-400 mb-5">Partner with Capital Match to reach thousands of active traders.</p>
                         <a href="mailto:admin@thecapitalmatch.com" className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-primary/25">

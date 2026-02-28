@@ -15,9 +15,9 @@
       theme: {
         extend: {
           colors: {
-            primary: '#8B5CF6', // Vivid Violet
-            secondary: '#10B981', // Emerald
-            accent: '#F59E0B', // Gold
+            primary: '#0AC1C9', // Midpoint Cyan
+            secondary: '#00E6A0', // Mint Green from top of logo
+            accent: '#0C8CE9', // Azure Blue from bottom of logo
             dark: '#030014', // Deep Obsidian
             'dark-mid': '#0F0B1E', // Slightly lighter dark
             'dark-card': '#161229', // Card background
@@ -35,7 +35,7 @@
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            display: ['Clash Display', 'Inter', 'sans-serif'], // Imaginary font stack, falling back to Inter
+            display: ['Clash Display', 'Inter', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           animation: {
@@ -72,8 +72,8 @@
       color: #FFFFFF;
       font-family: 'Inter', sans-serif;
       background-image:
-        radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
+        radial-gradient(circle at 15% 50%, rgba(10, 193, 201, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(12, 140, 233, 0.08), transparent 25%);
       background-attachment: fixed;
     }
 
@@ -89,18 +89,18 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
     }
 
     .glass-card:hover {
-      border-color: rgba(139, 92, 246, 0.3);
+      border-color: rgba(10, 193, 201, 0.4);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.15);
+      box-shadow: 0 20px 40px -10px rgba(10, 193, 201, 0.2);
     }
 
     .premium-gradient-text {
-      background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 50%, #A78BFA 100%);
+      background: linear-gradient(135deg, #00E6A0 0%, #0AC1C9 50%, #0C8CE9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 200% auto;
@@ -122,32 +122,21 @@
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, #7C3AED 0%, #6D28D9 100%);
+      background: linear-gradient(90deg, #00E6A0 0%, #0AC1C9 40%, #0C8CE9 100%);
+      background-size: 200% auto;
       position: relative;
       overflow: hidden;
       z-index: 1;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.3s ease;
-    }
-
-    .btn-primary:hover::before {
-      opacity: 1;
+      border: none;
+      transition: 0.5s;
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+      background-position: right center;
+      /* change the direction of the change here */
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(10, 193, 201, 0.5);
     }
 
     /* Scrollbar */
@@ -180,7 +169,7 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
+  <!-- <link rel="stylesheet" href="/index.css"> -->
 </head>
 
 <body>

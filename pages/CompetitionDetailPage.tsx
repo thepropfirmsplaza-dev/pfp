@@ -221,8 +221,8 @@ const CompetitionDetailPage = () => {
                                 <div>
                                     <div className="flex items-center gap-2 mb-1">
                                         <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${competition.status === 'active'
-                                                ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                                                : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                                            : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
                                             }`}>
                                             {competition.status === 'active' && <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>}
                                             {competition.status}
@@ -266,7 +266,7 @@ const CompetitionDetailPage = () => {
                                     </div>
                                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                                         <div
-                                            className="h-full bg-gradient-to-r from-primary to-violet-400 rounded-full transition-all duration-1000"
+                                            className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000"
                                             style={{ width: `${getProgressPercentage(competition.participants, competition.max_participants)}%` }}
                                         ></div>
                                     </div>
@@ -281,7 +281,7 @@ const CompetitionDetailPage = () => {
                                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Calendar size={18} className="text-primary" /> Event Timeline</h3>
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(139,92,246,0.5)]"></div>
+                                        <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(10,193,201,0.5)]"></div>
                                         <div>
                                             <div className="text-white font-medium">Registration Opens</div>
                                             <div className="text-gray-500 text-sm">{formatDate(competition.start_date)}</div>
@@ -289,7 +289,7 @@ const CompetitionDetailPage = () => {
                                     </div>
                                     <div className="border-l-2 border-dashed border-white/10 h-6 ml-[5px]"></div>
                                     <div className="flex items-center gap-4">
-                                        <div className="w-3 h-3 rounded-full bg-violet-400"></div>
+                                        <div className="w-3 h-3 rounded-full bg-accent"></div>
                                         <div>
                                             <div className="text-white font-medium">Competition Ends</div>
                                             <div className="text-gray-500 text-sm">{formatDate(competition.end_date)}</div>
@@ -362,7 +362,7 @@ const CompetitionDetailPage = () => {
                                         </div>
                                         <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                                             <div
-                                                className="h-full bg-gradient-to-r from-primary to-violet-400 rounded-full transition-all duration-500"
+                                                className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
                                                 style={{ width: `${(completedTasks.length / competition.tasks.length) * 100}%` }}
                                             ></div>
                                         </div>
@@ -376,8 +376,8 @@ const CompetitionDetailPage = () => {
                                     className={`block w-full transition-all duration-300 relative z-10 ${!isUnlocked ? 'pointer-events-none opacity-50 grayscale' : ''}`}
                                 >
                                     <button className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-lg font-bold transition-all duration-300 ${isUnlocked
-                                            ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5'
-                                            : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                                        ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5'
+                                        : 'bg-gray-800 text-gray-500 cursor-not-allowed'
                                         }`}>
                                         {isUnlocked ? (
                                             <>JOIN COMPETITION NOW <ArrowRight size={20} /></>

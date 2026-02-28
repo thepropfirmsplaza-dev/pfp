@@ -109,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartQuiz, onExplore }) => {
         }
         @keyframes float-3d { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         .text-gradient-premium {
-            background: linear-gradient(to right, #ffffff, #A78BFA, #8B5CF6);
+            background: linear-gradient(to right, #00E6A0, #0AC1C9, #0C8CE9);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .glass-floating-card {
@@ -178,7 +178,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartQuiz, onExplore }) => {
                   <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-blue-500 flex items-center justify-center overflow-hidden shadow-lg relative z-20 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
                     <img src={avatar2} alt="Trader 2" className="w-full h-full object-cover" />
                   </div>
-                  <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-purple-500 flex items-center justify-center overflow-hidden shadow-lg relative z-10 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
+                  <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-accent flex items-center justify-center overflow-hidden shadow-lg relative z-10 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
                     <img src={avatar3} alt="Trader 3" className="w-full h-full object-cover" />
                   </div>
                 </div>

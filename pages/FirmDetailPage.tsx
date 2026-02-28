@@ -244,7 +244,7 @@ const FirmDetailPage: React.FC = () => {
           {[
             { icon: DollarSign, label: 'Profit Split', value: firm.profitSplit || firm.profit_split || '80%', color: 'text-green-400' },
             { icon: Clock, label: 'Payout Speed', value: firm.avgPayoutTime || firm.avg_payout_time || '24h', color: 'text-blue-400' },
-            { icon: Target, label: 'Max Account', value: `$${(Number(firm.max_funding) / 1000)}K`, color: 'text-purple-400' },
+            { icon: Target, label: 'Max Account', value: `$${(Number(firm.max_funding) / 1000)}K`, color: 'text-accent' },
             { icon: TrendingUp, label: 'Leverage', value: firm.leverage || '1:100', color: 'text-yellow-400' },
           ].map((stat, idx) => (
             <div key={idx} className="bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.06] rounded-2xl p-5 text-center hover:border-white/10 transition-colors">
@@ -331,7 +331,7 @@ const FirmDetailPage: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => FirmService.trackClick(firm.id, 'challenge_buy')}
-                            className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-purple-500 hover:from-primary hover:to-purple-400 text-white text-[15px] font-bold shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30"
+                            className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent text-white text-[15px] font-bold shadow-[0_0_20px_rgba(10,193,201,)] hover:shadow-[0_0_30px_rgba(34,228,175,0.4)] transition-all hover:-translate-y-0.5 border border-white/10 hover:border-secondary/30"
                           >
                             Buy
                           </a>
@@ -360,7 +360,7 @@ const FirmDetailPage: React.FC = () => {
                   { label: 'Profit Split', value: firm.profitSplit || firm.profit_split || '80%', icon: DollarSign, color: 'text-green-400' },
                   { label: 'Leverage', value: firm.leverage || '1:100', icon: Layers, color: 'text-cyan-400' },
                   { label: 'Payout Speed', value: firm.avgPayoutTime || firm.avg_payout_time || '24h', icon: Clock, color: 'text-blue-400' },
-                  { label: 'Max Funding', value: `$${(Number(firm.max_funding) / 1000)}K`, icon: Target, color: 'text-purple-400' },
+                  { label: 'Max Funding', value: `$${(Number(firm.max_funding) / 1000)}K`, icon: Target, color: 'text-accent' },
                   { label: 'Founded', value: firm.foundedYear || firm.founded_year || '—', icon: Timer, color: 'text-yellow-400' },
                 ].map((rule, idx) => (
                   <div key={idx} className="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
@@ -541,7 +541,7 @@ const FirmDetailPage: React.FC = () => {
                 <div key={review.id} className="bg-white/[0.02] rounded-2xl border border-white/[0.06] hover:border-primary/30 transition-colors p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center font-bold text-white text-lg border border-white/[0.08]">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center font-bold text-white text-lg border border-white/[0.08]">
                         {(review.profiles?.full_name || review.user_id || 'T').toString().charAt(0).toUpperCase()}
                       </div>
                       <div>

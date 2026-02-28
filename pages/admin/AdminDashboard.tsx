@@ -85,9 +85,9 @@ const AdminDashboard: React.FC = () => {
             label: 'Registered Users',
             value: loading ? null : stats.usersCount,
             icon: Users,
-            color: 'text-purple-400',
-            bg: 'bg-purple-400/10',
-            border: 'border-purple-400/20',
+            color: 'text-accent',
+            bg: 'bg-accent/10',
+            border: 'border-accent/20',
             trend: 'Registered accounts',
             trendUp: null
         },
