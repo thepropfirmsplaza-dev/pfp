@@ -197,36 +197,36 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
                                         </div>
 
                                         {/* Key Stats */}
-                                        <div className="grid grid-cols-2 gap-2 mb-5">
-                                            <div className="bg-white/[0.03] rounded-xl px-2.5 py-3 border border-white/[0.04] overflow-hidden">
-                                                <div className="flex items-center space-x-1.5 mb-1 whitespace-nowrap">
-                                                    <TrendingUp className="w-3 h-3 text-secondary shrink-0" />
-                                                    <span className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold truncate">Profit Split</span>
+                                        <div className="grid grid-cols-2 gap-1.5 mb-5">
+                                            <div className="bg-white/[0.03] rounded-xl px-2 py-2.5 border border-white/[0.04] overflow-hidden">
+                                                <div className="flex items-center space-x-1 mb-1 whitespace-nowrap">
+                                                    <TrendingUp className="w-2.5 h-2.5 text-secondary shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 font-semibold truncate">Profit Split</span>
                                                 </div>
-                                                <span className="text-white font-bold text-sm block truncate">{profitSplit}</span>
+                                                <span className="text-white font-bold text-xs sm:text-sm block truncate">{profitSplit}</span>
                                             </div>
-                                            <div className="bg-white/[0.03] rounded-xl px-2.5 py-3 border border-white/[0.04] overflow-hidden">
-                                                <div className="flex items-center space-x-1.5 mb-1 whitespace-nowrap">
-                                                    <Clock className="w-3 h-3 text-blue-400 shrink-0" />
-                                                    <span className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold truncate">Payout</span>
+                                            <div className="bg-white/[0.03] rounded-xl px-2 py-2.5 border border-white/[0.04] overflow-hidden">
+                                                <div className="flex items-center space-x-1 mb-1 whitespace-nowrap">
+                                                    <Clock className="w-2.5 h-2.5 text-blue-400 shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 font-semibold truncate">Payout</span>
                                                 </div>
-                                                <span className="text-white font-bold text-sm block truncate">{payoutTime}</span>
+                                                <span className="text-white font-bold text-xs sm:text-sm block truncate">{payoutTime}</span>
                                             </div>
                                         </div>
 
                                         {/* Details Row */}
-                                        <div className="flex items-center gap-2 text-[11px] sm:text-xs text-gray-400 mb-5 px-1 whitespace-nowrap overflow-hidden w-full">
-                                            <div className="flex items-center gap-1 shrink-0">
+                                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] sm:text-[11px] text-gray-400 mb-5 px-0.5 w-full">
+                                            <div className="flex items-center gap-0.5">
                                                 <span className="text-gray-500">Type:</span>
                                                 <span className="text-white font-medium">{challengeType}</span>
                                             </div>
-                                            <div className="h-3 w-px bg-white/10 shrink-0"></div>
-                                            <div className="flex items-center gap-1 shrink-0">
+                                            <div className="h-2.5 w-px bg-white/10 hidden min-[360px]:block"></div>
+                                            <div className="flex items-center gap-0.5">
                                                 <span className="text-gray-500">From</span>
                                                 <span className="text-green-400 font-bold">{minPrice}</span>
                                             </div>
-                                            <div className="h-3 w-px bg-white/10 shrink-0"></div>
-                                            <div className="flex items-center gap-1 shrink-0 truncate">
+                                            <div className="h-2.5 w-px bg-white/10 hidden sm:block"></div>
+                                            <div className="flex items-center gap-0.5">
                                                 <span className="text-gray-500">Up to</span>
                                                 <span className="text-secondary font-bold">{maxAccount}</span>
                                             </div>
