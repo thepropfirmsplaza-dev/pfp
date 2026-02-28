@@ -243,7 +243,7 @@ const CompetitionsPage = () => {
                     const featured = filteredCompetitions.find(c => c.status === 'active') || filteredCompetitions[0];
                     return (
                         <div className="mb-12 group">
-                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(10,193,201,0.3)]">
+                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(0, 230, 160, )]">
                                 <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
@@ -324,7 +324,7 @@ const CompetitionsPage = () => {
                         {filteredCompetitions.map((comp, index) => (
                             <div
                                 key={comp.id}
-                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(10,193,201,0.25)] flex flex-col h-full"
+                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0, 230, 160, )] flex flex-col h-full"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 {/* Image Banner */}

@@ -199,7 +199,7 @@ const PayoutNotification: React.FC = () => {
                 }`}
         >
             {/* Main card with primary border glow */}
-            <div className="relative bg-[#0f0b1e] backdrop-blur-xl rounded-xl border border-primary/30 shadow-[0_0_20px_-5px_rgba(10,193,201,0.4)] overflow-hidden">
+            <div className="relative bg-[#0f0b1e] backdrop-blur-xl rounded-xl border border-primary/30 shadow-[0_0_20px_-5px_rgba(0, 230, 160, )] overflow-hidden">
 
                 {/* Close button */}
                 <button
@@ -214,7 +214,7 @@ const PayoutNotification: React.FC = () => {
                 <div className="flex items-center p-4">
                     {/* Favicon container - Bigger, no full-height bg */}
                     <div className="flex-shrink-0 mr-4">
-                        <div className="w-16 h-16 rounded-xl bg-dark flex items-center justify-center border border-primary/40 p-2 shadow-[0_0_15px_-5px_rgba(10,193,201,0.4)]">
+                        <div className="w-16 h-16 rounded-xl bg-dark flex items-center justify-center border border-primary/40 p-2 shadow-[0_0_15px_-5px_rgba(0, 230, 160, )]">
                             <img
                                 src={notification.firm.favicon}
                                 alt={notification.firm.name}
@@ -255,7 +255,7 @@ const PayoutNotification: React.FC = () => {
                                     ${notification.savedAmount}
                                 </span>{' '}
                                 using the code{' '}
-                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/20 text-primary font-bold text-base border border-primary/30 ml-1 shadow-[0_0_10px_rgba(10,193,201,0.3)]">
+                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/20 text-primary font-bold text-base border border-primary/30 ml-1 shadow-[0_0_10px_rgba(0, 230, 160, )]">
                                     {notification.discountCode}
                                 </span>
                             </p>
