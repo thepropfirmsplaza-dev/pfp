@@ -33,32 +33,15 @@ const MaintenanceMode: React.FC = () => {
                     We're currently performing scheduled maintenance to bring you an even better prop trading discovery experience. We'll be back online shortly.
                 </p>
 
-                {/* Status Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto w-full mb-12">
-                    <div className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 flex items-center gap-4 text-left backdrop-blur-sm">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
-                            <Clock className="w-6 h-6 text-blue-400" />
-                        </div>
-                        <div>
-                            <p className="text-white font-bold">Estimated Time</p>
-                            <p className="text-sm text-gray-500">Less than 2 hours</p>
-                        </div>
-                    </div>
-                    <a href={`mailto:${supportEmail}`} className="bg-white/[0.03] border border-white/[0.05] rounded-2xl p-4 flex items-center gap-4 text-left backdrop-blur-sm hover:bg-white/[0.05] transition-colors group cursor-pointer">
-                        <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                            <Zap className="w-6 h-6 text-secondary" />
-                        </div>
-                        <div>
-                            <p className="text-white font-bold hover:text-secondary transition-colors">Contact Support</p>
-                            <p className="text-sm text-gray-500 truncate w-32">{supportEmail}</p>
-                        </div>
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto w-full mb-12">
+                    <a href={`mailto:${supportEmail}`} className="flex-1 bg-white/[0.03] border border-white/[0.05] rounded-xl p-4 flex items-center justify-center gap-3 backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/10 transition-all group cursor-pointer w-full text-center">
+                        <Zap className="w-5 h-5 text-secondary group-hover:scale-110 transition-transform" />
+                        <span className="text-white font-bold group-hover:text-secondary transition-colors">Contact Support</span>
                     </a>
-                </div>
-
-                {/* Admin Login Bypass Link (Hidden unless hovered/focused below the main text) */}
-                <div className="mt-8 pt-8 border-t border-white/5 opacity-30 hover:opacity-100 transition-opacity">
-                    <a href="/#/login" className="text-sm font-medium text-gray-500 hover:text-white flex items-center justify-center gap-2">
-                        Admin Access <span className="text-xs">&rarr;</span>
+                    <a href="/#/login" className="flex-1 bg-brand-black border border-white/10 rounded-xl p-4 flex items-center justify-center gap-3 backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/20 transition-all group cursor-pointer w-full text-center shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                        <span className="text-gray-300 font-bold group-hover:text-white transition-colors">Admin Access</span>
+                        <span className="text-gray-500 group-hover:text-white transition-colors group-hover:translate-x-1 duration-200">&rarr;</span>
                     </a>
                 </div>
             </div>

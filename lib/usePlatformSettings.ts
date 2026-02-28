@@ -13,7 +13,7 @@ const DEFAULT_SETTINGS: PlatformSettings = {
     id: 1,
     platform_name: 'Capital Match',
     support_email: 'support@thecapitalmatch.com',
-    maintenance_mode: true, // TEST MOCK
+    maintenance_mode: false,
     public_registrations: true,
 };
 
