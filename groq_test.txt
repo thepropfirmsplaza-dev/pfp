@@ -1,0 +1,33 @@
+﻿{
+  "id": "chatcmpl-a78ba5f3-1a4f-47f2-bf93-f59de65e7422",
+  "object": "chat.completion",
+  "created": 1772278202,
+  "model": "llama-3.3-70b-versatile",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"winningFirmId\": \"123\",\n   \"explanation\": \"You're an advanced scalper with an aggressive risk strategy, and FTMO's high profit split of 90% and generous account sizes of up to $200,000 align perfectly with your goals. With a starting price of $155, which is well within your budget of $500, and the ability to trade both Forex and Crypto on the MT5 platform, FTMO is your ideal match. Your aggressive style will thrive under FTMO's daily 5% and total 10% drawdown limits.\"\n}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "queue_time": 0.195296193,
+    "prompt_tokens": 345,
+    "prompt_time": 0.044488599,
+    "completion_tokens": 121,
+    "completion_time": 0.426531883,
+    "total_tokens": 466,
+    "total_time": 0.471020482
+  },
+  "usage_breakdown": null,
+  "system_fingerprint": "fp_43d97c5965",
+  "x_groq": {
+    "id": "req_01kjj06fr5ehvsj2md4tewdqdz",
+    "seed": 711584862
+  },
+  "service_tier": "on_demand"
+}

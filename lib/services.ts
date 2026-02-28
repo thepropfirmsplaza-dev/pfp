@@ -22,7 +22,7 @@ function getFaviconUrl(website: string): string {
  * 
  * Logo source: Google Favicon API (derived from firm.website)
  */
-function mapFirm(raw: any): any {
+export function mapFirm(raw: any): any {
     if (!raw) return null;
 
     // PRIMARY logo: Google Favicon from the firm's website URL
