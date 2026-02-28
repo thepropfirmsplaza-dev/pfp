@@ -31,6 +31,8 @@ import ComparisonFloatingBar from './components/ComparisonFloatingBar';
 import PayoutNotification from './components/PayoutNotification';
 import { FirmFinderQuiz as Quiz } from './components/FirmFinderQuiz';
 import { VisualComparisonHub } from './components/VisualComparisonHub';
+import MaintenanceMode from './components/MaintenanceMode';
+import { usePlatformSettings } from './lib/usePlatformSettings';
 
 // ScrollToTop Component - Scrolls to top on route change
 const ScrollToTop: React.FC = () => {
@@ -68,6 +70,14 @@ const MainLayout = () => {
     const location = useLocation();
     const isAdminPage = location.pathname.startsWith('/admin');
     const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+
+    // Global Settings tracking
+    const { settings, loading } = usePlatformSettings();
+
+    // Show maintenance screen if globally enabled, UNLESS user is on an admin/auth route trying to log in or manage the site.
+    if (settings?.maintenance_mode && !isAdminPage && !isAuthPage && !loading) {
+        return <MaintenanceMode />;
+    }
 
     return (
         <div className="min-h-screen bg-dark flex flex-col font-sans text-white selection:bg-primary/30">
