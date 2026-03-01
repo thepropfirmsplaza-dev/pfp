@@ -1,4 +1,4 @@
--- Capital Match - CONFIRM ADMIN EMAIL
+-- PropFirms Plaza - CONFIRM ADMIN EMAIL
 -- The account exists and password is correct!
 -- The ONLY issue is the email is not confirmed.
 -- Run this in Supabase SQL Editor:

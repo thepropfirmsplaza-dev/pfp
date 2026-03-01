@@ -25,7 +25,15 @@ const LoginPage = () => {
 
             // Check if admin and redirect accordingly
             const emailLower = data.user?.email?.toLowerCase();
-            if (emailLower === 'admin@thecapitalmatch.com' || emailLower === 'admin@capitalmatch.io' || emailLower === 'capitalmatch@gmail.com' || emailLower === 'thecapitalmatch@gmail.com') {
+            const adminEmails = [
+                'thepropfirmsplaza@gmail.com',
+                'admin@propfirmsplaza.com',
+                'admin@capitalmatch.io',
+                'capitalmatch@gmail.com',
+                'thecapitalmatch@gmail.com'
+            ];
+
+            if (emailLower && adminEmails.includes(emailLower)) {
                 navigate('/admin');
             } else {
                 // Also check database role just in case
@@ -61,7 +69,7 @@ const LoginPage = () => {
                     <Link to="/" className="relative flex items-center justify-center h-20 group">
                         <img
                             src="/logo.png"
-                            alt="Capital Match"
+                            alt="PropFirms Plaza"
                             className="h-24 w-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 transform group-hover:scale-105"
                         />
                     </Link>
@@ -70,7 +78,7 @@ const LoginPage = () => {
                     Welcome Back
                 </h2>
                 <p className="mt-2 text-center text-sm text-brand-muted">
-                    Sign in to your Capital Match account
+                    Sign in to your PropFirms Plaza account
                 </p>
             </div>
 
@@ -188,7 +196,7 @@ const LoginPage = () => {
                             </div>
                             <div className="relative flex justify-center text-sm">
                                 <span className="px-2 bg-brand-surface text-brand-muted">
-                                    New to Capital Match?
+                                    New to PropFirms Plaza?
                                 </span>
                             </div>
                         </div>

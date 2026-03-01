@@ -119,7 +119,7 @@ const PayoutNotification: React.FC = () => {
             };
         } else {
             // Discount Logic
-            // Code: CAPITAL
+            // Code: PLAZA
             // Real Price = challenge.price
             // "Was" Price (implied) = Real Price / 0.8
             // Saved = Was - Real
@@ -132,7 +132,7 @@ const PayoutNotification: React.FC = () => {
                     accountSize: accountSizeDisplay,
                     currency: '$',
                     amount: '',
-                    discountCode: 'CAPITAL',
+                    discountCode: 'PLAZA',
                     savedAmount: '20'
                 };
             }
@@ -146,7 +146,7 @@ const PayoutNotification: React.FC = () => {
                 accountSize: accountSizeDisplay,
                 currency: '$',
                 amount: '',
-                discountCode: 'CAPITAL', // HARDCODED
+                discountCode: 'PLAZA', // HARDCODED
                 savedAmount: saved.toLocaleString(),
             };
         }
@@ -199,7 +199,7 @@ const PayoutNotification: React.FC = () => {
                 }`}
         >
             {/* Main card with primary border glow */}
-            <div className="relative bg-[#0f0b1e] backdrop-blur-xl rounded-xl border border-primary/30 shadow-[0_0_20px_-5px_rgba(0, 230, 160, )] overflow-hidden">
+            <div className="relative bg-[#0f1a12] backdrop-blur-xl rounded-xl border border-primary/30 shadow-[0_0_20px_-5px_rgba(31, 214, 85, 0.4)] overflow-hidden">
 
                 {/* Close button */}
                 <button
@@ -214,13 +214,13 @@ const PayoutNotification: React.FC = () => {
                 <div className="flex items-center p-4">
                     {/* Favicon container - Bigger, no full-height bg */}
                     <div className="flex-shrink-0 mr-4">
-                        <div className="w-16 h-16 rounded-xl bg-dark flex items-center justify-center border border-primary/40 p-2 shadow-[0_0_15px_-5px_rgba(0, 230, 160, )]">
+                        <div className="w-16 h-16 rounded-xl bg-dark flex items-center justify-center border border-primary/40 p-2 shadow-[0_0_15px_-5px_rgba(31, 214, 85, 0.4)]">
                             <img
                                 src={notification.firm.favicon}
                                 alt={notification.firm.name}
                                 className="w-full h-full object-contain rounded-lg"
                                 onError={(e) => {
-                                    (e.target as HTMLImageElement).src = 'https://placehold.co/64x64/030014/8B5CF6?text=' + notification.firm.name.charAt(0);
+                                    (e.target as HTMLImageElement).src = 'https://placehold.co/64x64/030014/1fd655?text=' + notification.firm.name.charAt(0);
                                 }}
                             />
                         </div>
@@ -255,7 +255,7 @@ const PayoutNotification: React.FC = () => {
                                     ${notification.savedAmount}
                                 </span>{' '}
                                 using the code{' '}
-                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/20 text-primary font-bold text-base border border-primary/30 ml-1 shadow-[0_0_10px_rgba(0, 230, 160, )]">
+                                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/20 text-primary font-bold text-base border border-primary/30 ml-1 shadow-[0_0_10px_rgba(31, 214, 85, 0.4)]">
                                     {notification.discountCode}
                                 </span>
                             </p>

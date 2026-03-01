@@ -168,7 +168,7 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
                             return (
                                 <div
                                     key={firm.id}
-                                    className="group relative rounded-2xl border border-secondary/40 bg-[#0f0b1e]/90 backdrop-blur-md overflow-hidden hover:-translate-y-1 transition-all duration-500 hover:border-secondary hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.4)]"
+                                    className="group relative rounded-2xl border border-secondary/40 bg-[#0f1a12]/90 backdrop-blur-md overflow-hidden hover:-translate-y-1 transition-all duration-500 hover:border-secondary hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.4)]"
                                 >
                                     {/* Badge */}
                                     {badge && (

@@ -175,7 +175,7 @@ const FirmDetailPage: React.FC = () => {
 
           {/* Firm Header */}
           <div className="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-[#0f0b1e]">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-[#0f1a12]">
               <img src={logoSrc} alt={firm.name} className="w-full h-full object-contain p-2" />
             </div>
             <div className="flex-grow">
@@ -220,20 +220,23 @@ const FirmDetailPage: React.FC = () => {
           </div>
 
           {/* Discount Code Banner */}
-          {firm.discount_code && (
-            <div
-              onClick={() => {
-                navigator.clipboard.writeText(firm.discount_code);
-                showModal({ type: 'success', title: 'Code Copied!', message: `Promo code "${firm.discount_code}" copied to clipboard!` });
-              }}
-              className="mt-6 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 cursor-pointer hover:bg-primary/20 transition-all group"
-            >
-              <span className="text-primary text-sm font-medium">Promo Code</span>
-              <span className="w-px h-4 bg-primary/40"></span>
-              <span className="text-white font-bold tracking-wider">{firm.discount_code}</span>
-              <span className="text-primary text-xs group-hover:scale-110 transition-transform">📋</span>
-            </div>
-          )}
+          {(() => {
+            const code = (!firm.discount_code || ['SPOT', 'CAPITAL'].includes(firm.discount_code.toUpperCase())) ? 'PLAZA' : firm.discount_code;
+            return (
+              <div
+                onClick={() => {
+                  navigator.clipboard.writeText(code);
+                  showModal({ type: 'success', title: 'Code Copied!', message: `Promo code "${code}" copied to clipboard!` });
+                }}
+                className="mt-6 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 cursor-pointer hover:bg-primary/20 transition-all group"
+              >
+                <span className="text-primary text-sm font-medium">Promo Code</span>
+                <span className="w-px h-4 bg-primary/40"></span>
+                <span className="text-white font-bold tracking-wider">{code}</span>
+                <span className="text-primary text-xs group-hover:scale-110 transition-transform">📋</span>
+              </div>
+            );
+          })()}
         </div>
       </div>
 
@@ -271,7 +274,7 @@ const FirmDetailPage: React.FC = () => {
         {/* ─── ACCOUNT PRICING TABLE ─── */}
         {challenges.length > 0 && (
           <div className="w-full max-w-[1600px] mx-auto my-12">
-            <div className="bg-[#0f0b1e] border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
+            <div className="bg-[#0f1a12] border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
               <div className="p-6 md:p-8 bg-gradient-to-r from-white/[0.02] to-transparent border-b border-white/[0.06] flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold text-white mb-2 flex items-center space-x-3">

@@ -15,7 +15,7 @@ export const generateMatchExplanation = async (firm: Firm, prefs: QuizPreference
     const model = 'gemini-3-flash-preview';
 
     const prompt = `
-      You are an expert prop trading consultant for Capital Match.
+      You are an expert prop trading consultant for PropFirms Plaza.
       
       User Profile:
       - Experience: ${prefs.experienceLevel}

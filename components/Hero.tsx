@@ -1,15 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FEATURE_CARDS } from '../constants';
-import { ArrowRight, Star, ShieldCheck, Zap, BarChart3, Users } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck, Zap, Cpu, CheckCircle2, ChevronRight, Terminal, TrendingUp } from 'lucide-react';
 import heroBgClean from '../assets/hero-bg-clean.png';
-
-// Import Logos
-import logo5ers from '../assets/hero-logos/firm-5ers.png';
-import logoAlpha from '../assets/hero-logos/firm-alpha.png';
-import logoE8 from '../assets/hero-logos/firm-e8markets.png';
-import logoFtmo from '../assets/hero-logos/firm-ftmo.png';
-import logoFundedNext from '../assets/hero-logos/firm-fundednext.png';
-import logoFundingPips from '../assets/hero-logos/firm-fundingpips.png';
 
 // Import Avatars
 import avatar1 from '../assets/avatar-1.jpg';
@@ -21,244 +13,237 @@ interface HeroProps {
   onExplore: () => void;
 }
 
-interface TileProps {
-  src: string;
-  alt: string;
-  color: string;
-  darkColor: string;
-  className?: string;
-  style?: React.CSSProperties;
-  delay?: string;
-  rotateX?: number;
-  rotateY?: number;
-  rotateZ?: number;
-  fullBleed?: boolean;
-}
-
-const Floating3DTile: React.FC<TileProps> = ({ src, alt, color, darkColor, className, style, delay = '0s', rotateX = 25, rotateY = -15, rotateZ = 10, fullBleed = false }) => {
-  return (
-    <div
-      className={`absolute perspective-wrapper ${className}`}
-      style={{
-        ...style,
-        animationDelay: delay
-      }}
-    >
-      <div className="cube-container" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)` }}>
-        <div className="cube">
-          <div className="face front" style={{ backgroundColor: color, border: '1px solid rgba(255,255,255,0.15)' }}>
-            <div className="gloss-overlay"></div>
-            <img
-              src={src}
-              alt={alt}
-              className={`${fullBleed ? 'w-full h-full object-cover rounded-[14px]' : 'w-[80%] h-[80%] object-contain'} relative z-10 drop-shadow-2xl select-none`}
-              style={{ pointerEvents: 'none' }}
-            />
-          </div>
-          <div className="face back" style={{ backgroundColor: darkColor, border: '1px solid rgba(255,255,255,0.05)' }}></div>
-          <div className="face right" style={{ backgroundColor: darkColor }}></div>
-          <div className="face left" style={{ backgroundColor: darkColor }}></div>
-          <div className="face top" style={{ backgroundColor: color }}></div>
-          <div className="face bottom" style={{ backgroundColor: darkColor }}></div>
-          <div className="shadow-cast"></div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const Hero: React.FC<HeroProps> = ({ onStartQuiz, onExplore }) => {
+  const [activeStep, setActiveStep] = useState(0);
+
+  const terminalSteps = [
+    { text: "Initializing Plaza AI Core...", status: "done" },
+    { text: "Analyzing 35+ Prop Firms...", status: "done" },
+    { text: "Cross-referencing trader profile...", status: "loading" },
+    { text: "Optimizing for highest payout odds...", status: "pending" },
+    { text: "Match Found: Top 3 Providers", status: "pending" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % terminalSteps.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative pt-24 pb-32 overflow-hidden min-h-screen flex flex-col justify-center perspective-container">
+    <div className="relative pt-24 pb-32 overflow-hidden min-h-screen flex flex-col justify-center bg-dark">
       <style>{`
-        .perspective-container { perspective: 2000px; }
-        .perspective-wrapper {
-            transform-style: preserve-3d;
-            animation: float-3d 6s ease-in-out infinite;
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(to right, rgba(31, 214, 85, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(31, 214, 85, 0.05) 1px, transparent 1px);
+          background-size: 50px 50px;
+          mask-image: radial-gradient(circle at center, black, transparent 80%);
+          -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
         }
-        .cube-container {
-            width: 100%; height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
+        .text-gradient-vibrant {
+            background: linear-gradient(135deg, #ffffff 0%, #1fd655 50%, #15a13c 100%);
+            -webkit-background-clip: text; 
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .cube {
-            width: 100%; height: 100%; position: relative;
-            transform-style: preserve-3d;
+        .widget-panel {
+            background: rgba(15, 26, 18, 0.7);
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(31, 214, 85, 0.2);
+            box-shadow: 0 40px 80px -20px rgba(10, 99, 33, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+            border-radius: 24px;
+            overflow: hidden;
         }
-        .face {
-            position: absolute; width: 100%; height: 100%;
-            border-radius: 16px; display: flex; align-items: center; justify-content: center;
-            backface-visibility: visible; box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        .widget-header {
+            background: linear-gradient(180deg, rgba(31,214,85,0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(31,214,85,0.15);
         }
-        .gloss-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%);
-            border-radius: 16px; pointer-events: none;
+        .animate-float-subtle { animation: float-subtle 6s ease-in-out infinite; }
+        @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(0deg, transparent 0%, rgba(31, 214, 85, 0.1) 50%, transparent 100%);
+            position: absolute;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+            z-index: 50;
         }
-        .front  { transform: translateZ(10px); }
-        .back   { transform: rotateY(180deg) translateZ(10px); }
-        .right  { width: 20px; right: -10px; top: 0; transform: rotateY(90deg); border-radius: 2px; }
-        .left   { width: 20px; left: -10px; top: 0; transform: rotateY(-90deg); border-radius: 2px; }
-        .top    { height: 20px; top: -10px; left: 0; transform: rotateX(90deg); border-radius: 2px; }
-        .bottom { height: 20px; bottom: -10px; left: 0; transform: rotateX(-90deg); border-radius: 2px; }
-        .shadow-cast {
-            position: absolute; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); filter: blur(15px);
-            transform: translateZ(-50px) translateY(50px) rotateX(90deg); opacity: 0.6;
-            border-radius: 50%; z-index: -1;
-        }
-        @keyframes float-3d { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-        .text-gradient-premium {
-            background: linear-gradient(to right, #00E6A0, #0AC1C9, #0C8CE9);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .glass-floating-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(246, 174, 19, 0.25);
-            animation: float-card 8s ease-in-out infinite;
-        }
-        @keyframes float-card { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
+        @keyframes scanline {
+            0% { top: -100px; }
+            100% { top: 100%; }
         }
       `}</style>
 
-      {/* Background Layer */}
-      <div className="absolute inset-0 z-0">
-        <img src={heroBgClean} alt="Hero Background" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#030014]/90 backdrop-blur-sm"></div>
-        {/* Animated Orbs for Depth */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-secondary/20 rounded-full mix-blend-screen filter blur-[150px] animate-blob" style={{ animationDelay: '2s' }}></div>
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid-pattern opacity-60 transform skew-y-12 scale-150 origin-top-left translate-y-24"></div>
+        {/* Glowing Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full mix-blend-screen filter blur-[120px] animate-[pulse-glow_8s_ease-in-out_infinite]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/15 rounded-full mix-blend-screen filter blur-[100px] animate-[pulse-glow_10s_ease-in-out_infinite_reverse]"></div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full pt-10 mt-10 md:mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full pt-10 mt-10 md:mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-          {/* Left Column: Typography & CTAs (7 cols) */}
-          <div className="lg:col-span-7 text-left">
-            {/* Trust Badge */}
-            <div className="inline-flex items-center space-x-3 bg-white/[0.03] border border-white/[0.08] rounded-full pl-3 pr-5 py-2 mb-8 animate-[fadeIn_0.5s_ease-out] backdrop-blur-md hover:bg-white/[0.05] transition-colors">
-              <span className="relative flex h-3 w-3">
+          {/* Left Column: Typography & CTAs (6 cols) */}
+          <div className="lg:col-span-6 text-left relative z-30">
+            {/* Status Badge */}
+            <div className="inline-flex items-center space-x-3 bg-dark-card/90 border border-primary/30 rounded-full pl-3 pr-5 py-2 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(31,214,85,0.15)] group cursor-default">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
               </span>
-              <span className="text-sm font-medium text-gray-300">Live AI Matching Engine Active</span>
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider group-hover:text-white transition-colors">Plaza Network Live</span>
             </div>
 
             {/* Premium Heading */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold tracking-tight mb-8 leading-[1.1] animate-[fadeIn_0.5s_ease-out]" style={{ animationFillMode: 'both' }}>
-              <span className="text-white block mb-2">Discover Your</span>
-              <span className="text-gradient-premium inline-block pb-2">Ultimate Edge</span><br />
-              <span className="text-white">In Trading.</span>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-extrabold tracking-tight mb-6 leading-[1.05]">
+              <span className="text-white block mb-2 drop-shadow-sm">The Ultimate</span>
+              <span className="text-gradient-vibrant inline-block pb-2">Prop Firm</span><br />
+              <span className="text-white drop-shadow-sm">Widget.</span>
             </h1>
 
-            <p className="max-w-xl text-lg md:text-xl text-gray-400 mb-10 leading-relaxed font-light animate-[fadeIn_0.5s_ease-out]" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-              We instantly analyze 30+ proprietary firms to match your unique strategy with the perfect capital provider. Stop guessing, start scaling.
+            <p className="max-w-lg text-lg md:text-xl text-text-muted mb-10 leading-relaxed font-light">
+              Stop guessing which firm is right for you. Our live matchmaking widget algorithmically connects your exact trading style to the most verified, reputable funding providers instantly.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center space-y-5 sm:space-y-0 sm:space-x-8 animate-[fadeIn_0.5s_ease-out]" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            <div className="flex flex-col sm:flex-row items-center space-y-5 sm:space-y-0 sm:space-x-6">
               <button
                 onClick={onStartQuiz}
-                className="group w-full sm:w-auto overflow-hidden relative bg-white text-dark px-10 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+                className="group relative w-full sm:w-auto bg-primary text-dark px-10 py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_40px_-10px_rgba(31,214,85,0.6)] overflow-hidden"
               >
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
-                <span>Launch Matchmaker</span>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                <span>Start Matching</span>
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <div className="flex items-center space-x-4 w-full sm:w-auto mt-4 sm:mt-0 px-2 sm:px-0">
-                <div className="flex -space-x-4 hover:-space-x-2 transition-all duration-300 group cursor-default">
-                  <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-primary flex items-center justify-center overflow-hidden shadow-lg relative z-30 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
-                    <img src={avatar1} alt="Trader 1" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-blue-500 flex items-center justify-center overflow-hidden shadow-lg relative z-20 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
-                    <img src={avatar2} alt="Trader 2" className="w-full h-full object-cover" />
-                  </div>
-                  <div className="w-12 h-12 rounded-full border-2 border-[#030014] bg-accent flex items-center justify-center overflow-hidden shadow-lg relative z-10 group-hover:z-50 group-hover:-translate-y-1 transition-transform">
-                    <img src={avatar3} alt="Trader 3" className="w-full h-full object-cover" />
-                  </div>
+              <button
+                onClick={onExplore}
+                className="group w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white border border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all duration-300 flex items-center justify-center"
+              >
+                Browse Manually
+              </button>
+            </div>
+
+            {/* Social Proof */}
+            <div className="mt-12 flex items-center space-x-5 pt-8 border-t border-white/10">
+              <div className="flex -space-x-3 hover:-space-x-1 transition-all duration-300">
+                <div className="w-10 h-10 rounded-full border-2 border-dark bg-secondary flex items-center justify-center overflow-hidden z-30"><img src={avatar1} alt="Trader 1" className="w-full h-full object-cover" /></div>
+                <div className="w-10 h-10 rounded-full border-2 border-dark bg-primary flex items-center justify-center overflow-hidden z-20"><img src={avatar2} alt="Trader 2" className="w-full h-full object-cover" /></div>
+                <div className="w-10 h-10 rounded-full border-2 border-dark bg-accent flex items-center justify-center overflow-hidden z-10"><img src={avatar3} alt="Trader 3" className="w-full h-full object-cover" /></div>
+              </div>
+              <div>
+                <div className="flex items-center space-x-1">
+                  {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3.5 h-3.5 text-primary fill-primary" />)}
                 </div>
-                <div className="text-sm">
-                  <div className="flex items-center space-x-1 mb-0.5">
-                    {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 text-warning fill-warning text-yellow-500 fill-yellow-500" />)}
-                  </div>
-                  <span className="text-gray-400 font-medium tracking-wide">10,000+ funded</span>
-                </div>
+                <span className="text-text-muted text-sm font-medium block mt-0.5">Over 15,000 traders matched</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Visualization (5 cols) */}
-          <div className="lg:col-span-5 relative h-[500px] w-full hidden lg:block pointer-events-none mt-20 lg:mt-0">
+          {/* Right Column: Unique Widget Showcase (6 cols) */}
+          <div className="lg:col-span-6 relative w-full hidden lg:flex justify-end items-center perspective-1000 h-[600px]">
 
-            {/* Glass metric card 1 */}
-            <div className="absolute top-[10%] -left-[25%] z-40 glass-floating-card px-5 py-4 rounded-2xl flex items-center space-x-4" style={{ animationDelay: '0s' }}>
-              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center border border-secondary/30">
-                <Zap className="w-6 h-6 text-secondary" />
+            {/* The Interactive Widget Main Container */}
+            <div className="widget-panel w-[90%] md:w-[85%] animate-float-subtle relative z-20 transform rotate-y-[-10deg] rotate-x-[5deg]">
+              <div className="scanline"></div>
+
+              {/* Header Navbar of Widget */}
+              <div className="widget-header p-5 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Cpu className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold tracking-wide">AI Matchmaker Engine</h3>
+                    <p className="text-primary text-[10px] uppercase tracking-widest font-semibold flex items-center">
+                      <Zap className="w-3 h-3 mr-1" /> System Active
+                    </p>
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                  <div className="w-3 h-3 rounded-full bg-primary/70 shadow-[0_0_10px_rgba(31,214,85,0.8)]"></div>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-white">$100M+</p>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Capital Allocated</p>
+
+              {/* Widget Body */}
+              <div className="p-6">
+                {/* Terminal Output Simulation */}
+                <div className="bg-dark/80 rounded-xl border border-white/5 p-4 mb-6 font-mono text-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-2 opacity-30"><Terminal className="w-6 h-6 text-white" /></div>
+                  {terminalSteps.map((step, idx) => (
+                    <div key={idx} className={`flex items-start space-x-3 mb-3 ${idx > activeStep ? 'opacity-30' : 'opacity-100'} transition-opacity duration-500`}>
+                      <ChevronRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${idx === activeStep ? 'text-primary animate-pulse' : 'text-text-muted'}`} />
+                      <div className="flex-1">
+                        <p className={`${idx === activeStep ? 'text-primary drop-shadow-[0_0_5px_rgba(31,214,85,0.5)]' : 'text-gray-300'}`}>{step.text}</p>
+                        {idx < activeStep && (
+                          <div className="flex items-center mt-1 text-[10px] text-primary/70">
+                            <CheckCircle2 className="w-3 h-3 mr-1" /> Complete
+                          </div>
+                        )}
+                        {idx === activeStep && step.status === 'loading' && (
+                          <div className="w-full bg-dark flex h-1.5 rounded-full mt-2 overflow-hidden border border-white/5">
+                            <div className="bg-primary h-full w-1/2 animate-[marquee_1s_linear_infinite] rounded-full"></div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Live Metrics Grid inside Widget */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-4 flex flex-col justify-between hover:bg-white/[0.05] transition-colors cursor-default">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-text-muted text-xs uppercase tracking-wider font-semibold">Firms Scanned</span>
+                      <div className="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+                    </div>
+                    <div className="text-3xl font-bold text-white tracking-tight">38<span className="text-primary text-lg">/38</span></div>
+                  </div>
+                  <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-4 flex flex-col justify-between hover:bg-white/[0.05] transition-colors cursor-default">
+                    <span className="text-text-muted text-xs uppercase tracking-wider font-semibold mb-2 block">Top Match Score</span>
+                    <div className="flex items-end space-x-2">
+                      <div className="text-3xl font-bold text-white tracking-tight">98.4<span className="text-text-muted text-lg">%</span></div>
+                      <TrendingUp className="w-5 h-5 text-primary mb-1" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Widget Action Button */}
+                <button className="w-full bg-white/5 hover:bg-primary/10 border border-white/10 hover:border-primary/50 text-white font-semibold py-4 rounded-xl mt-6 transition-all duration-300 flex items-center justify-center group">
+                  <Zap className="w-5 h-5 mr-2 text-primary group-hover:scale-110 transition-transform" />
+                  View Full Match Report
+                </button>
               </div>
             </div>
 
-            {/* Glass metric card 2 */}
-            <div className="absolute bottom-[15%] -right-[5%] z-40 glass-floating-card px-5 py-4 rounded-2xl flex items-center space-x-4" style={{ animationDelay: '1.5s' }}>
-              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
-                <ShieldCheck className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">30+</p>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Verified Firms</p>
-              </div>
-            </div>
+            {/* Background Decoration elements for Widget */}
+            <div className="absolute top-[10%] right-[5%] w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 backdrop-blur-3xl animate-float-medium z-10"></div>
+            <div className="absolute bottom-[5%] left-[10%] w-48 h-48 rounded-full bg-gradient-to-tl from-secondary/20 to-transparent border border-secondary/20 backdrop-blur-3xl animate-float-slow z-10" style={{ animationDelay: '2s' }}></div>
 
-            {/* 3D Tile Cluster (Tighter arrangement) */}
-            <div className="absolute inset-0 flex items-center justify-center scale-[1.25] translate-x-16">
-              {/* Central Hero Tile */}
-              <Floating3DTile
-                src={logoFtmo} alt="FTMO" color="#121212" darkColor="#000000"
-                className="z-30 w-36 h-36 drop-shadow-[0_0_40px_rgba(255,255,255,0.2)]" rotateX={15} rotateY={-20} rotateZ={5} delay="0s"
-              />
-              {/* Orbiting Tiles */}
-              <Floating3DTile
-                src={logoFundingPips} alt="Funding Pips" color="#121355" darkColor="#0a0b2e"
-                className="absolute -top-[15%] right-[10%] z-20 w-28 h-28" rotateX={25} rotateY={30} rotateZ={-10} delay="0.5s" fullBleed
-              />
-              <Floating3DTile
-                src={logo5ers} alt="The 5%ers" color="#F59E0B" darkColor="#ea580c"
-                className="absolute top-[30%] -left-[15%] z-20 w-24 h-24 drop-shadow-[0_0_20px_rgba(245,158,11,0.2)]" rotateX={-15} rotateY={40} rotateZ={15} delay="1s"
-              />
-              <Floating3DTile
-                src={logoE8} alt="E8 Markets" color="#000000" darkColor="#111111"
-                className="absolute bottom-[0%] -left-[0%] z-20 w-28 h-28" rotateX={40} rotateY={-15} rotateZ={-5} delay="1.5s" fullBleed
-              />
-              <Floating3DTile
-                src={logoFundedNext} alt="FundedNext" color="#6366F1" darkColor="#4338CA"
-                className="absolute -bottom-[15%] right-[25%] z-20 w-32 h-32" rotateX={-30} rotateY={-25} rotateZ={20} delay="2s"
-              />
-              <Floating3DTile
-                src={logoAlpha} alt="Alpha Capital" color="#3B82F6" darkColor="#1D4ED8"
-                className="absolute top-[40%] -right-[10%] z-10 w-20 h-20" rotateX={10} rotateY={-40} rotateZ={-15} delay="2.5s"
-              />
-            </div>
           </div>
         </div>
 
         {/* Premium Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-32 lg:mt-40 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 md:mt-24 lg:mt-32 relative z-20">
           {FEATURE_CARDS.map((card, idx) => (
-            <div key={idx} className="group relative bg-[#0f0b1e]/80 backdrop-blur-md border border-white/[0.05] rounded-[2rem] p-8 hover:bg-[#161229] hover:border-white/[0.1] hover:-translate-y-2 transition-all duration-300 shadow-xl overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-all duration-500"></div>
-              <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mb-6 text-white group-hover:scale-110 group-hover:text-primary transition-all duration-300 relative z-10">
+            <div key={idx} className="group relative bg-dark/40 backdrop-blur-xl border border-white/5 rounded-2xl p-7 hover:bg-dark-card hover:border-primary/40 transition-all duration-500 overflow-hidden hover:-translate-y-2 shadow-lg hover:shadow-[0_20px_40px_-15px_rgba(31,214,85,0.3)]">
+              {/* Subtle gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_20px_rgba(31,214,85,0.4)] transition-all duration-300">
                 <card.icon className="w-7 h-7" />
               </div>
-              <h3 className="font-bold text-xl text-white mb-3 relative z-10">{card.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed relative z-10">{card.desc}</p>
+              <h3 className="relative z-10 font-bold text-xl text-white mb-3 group-hover:text-primary transition-colors duration-300">{card.title}</h3>
+              <p className="relative z-10 text-text-muted text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{card.desc}</p>
             </div>
           ))}
         </div>

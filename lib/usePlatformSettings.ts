@@ -11,8 +11,8 @@ export interface PlatformSettings {
 
 const DEFAULT_SETTINGS: PlatformSettings = {
     id: 1,
-    platform_name: 'Capital Match',
-    support_email: 'support@thecapitalmatch.com',
+    platform_name: 'PropFirms Plaza',
+    support_email: 'support@propfirmsplaza.com',
     maintenance_mode: false,
     public_registrations: true,
 };

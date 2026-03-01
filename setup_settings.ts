@@ -6,8 +6,8 @@ async function setupSettings() {
         sql_query: `
       CREATE TABLE IF NOT EXISTS platform_settings (
         id integer PRIMARY KEY DEFAULT 1 CHECK (id = 1),
-        platform_name text NOT NULL DEFAULT 'Capital Match',
-        support_email text NOT NULL DEFAULT 'support@thecapitalmatch.com',
+        platform_name text NOT NULL DEFAULT 'PropFirms Plaza',
+        support_email text NOT NULL DEFAULT 'support@propfirmsplaza.com',
         maintenance_mode boolean NOT NULL DEFAULT false,
         public_registrations boolean NOT NULL DEFAULT true,
         updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -26,8 +26,8 @@ async function setupSettings() {
         .from('platform_settings')
         .upsert({
             id: 1,
-            platform_name: 'Capital Match',
-            support_email: 'support@thecapitalmatch.com',
+            platform_name: 'PropFirms Plaza',
+            support_email: 'support@propfirmsplaza.com',
             maintenance_mode: false,
             public_registrations: true
         }, { onConflict: 'id' });

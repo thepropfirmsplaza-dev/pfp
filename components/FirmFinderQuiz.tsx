@@ -91,11 +91,11 @@ export const FirmFinderQuiz: React.FC<FirmFinderQuizProps> = ({ onComplete }) =>
             <div className="absolute inset-0 bg-primary blur-2xl opacity-40 animate-pulse"></div>
             <Loader2 className="w-20 h-20 text-primary animate-spin relative z-10" />
           </div>
-          <h3 className="text-3xl font-bold mt-4 text-white">AI Analysis in Progress</h3>
+          <h3 className="text-3xl font-bold mt-4 text-white">Plaza AI Analysis in Progress</h3>
           <div className="flex flex-col items-center mt-4 space-y-2">
-            <p className="text-text-muted animate-pulse">Scanning 400+ firms...</p>
-            <p className="text-text-muted animate-pulse animation-delay-500">Verifying payout proofs...</p>
-            <p className="text-text-muted animate-pulse animation-delay-1000">Matching risk profile...</p>
+            <p className="text-primary animate-pulse font-medium">Scanning 400+ firms...</p>
+            <p className="text-primary/80 animate-pulse animation-delay-500 font-medium">Verifying payout proofs...</p>
+            <p className="text-primary/60 animate-pulse animation-delay-1000 font-medium">Matching risk profile...</p>
           </div>
         </div>
       </div>
@@ -106,11 +106,11 @@ export const FirmFinderQuiz: React.FC<FirmFinderQuizProps> = ({ onComplete }) =>
     return (
       <div className="max-w-3xl mx-auto animate-fade-in">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-4 bg-secondary/10 rounded-2xl mb-6 ring-1 ring-secondary/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-            <Zap className="w-8 h-8 text-secondary" />
+          <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 ring-1 ring-primary/30 shadow-[0_0_40px_rgba(31,214,85,0.3)]">
+            <Zap className="w-8 h-8 text-primary animate-pulse" />
           </div>
-          <h2 className="text-4xl font-bold text-white mb-3">Perfect Match Found</h2>
-          <p className="text-text-muted text-lg">Our AI has selected the optimal funding partner for you.</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Plaza AI <span className="text-primary">Match</span> Found</h2>
+          <p className="text-text-muted text-lg max-w-xl mx-auto">Our proprietary algorithm has selected the optimal funding partner tailored precisely to your trading profile.</p>
         </div>
 
         <div className="glass-panel p-0 rounded-3xl border border-primary/30 relative overflow-hidden shadow-2xl">
@@ -139,11 +139,12 @@ export const FirmFinderQuiz: React.FC<FirmFinderQuizProps> = ({ onComplete }) =>
             </div>
 
             <div className="bg-gradient-to-br from-dark-mid to-dark p-6 rounded-2xl border border-primary/20 mb-8 relative">
-              <div className="absolute top-4 right-4 text-primary/20">
-                <Zap className="w-12 h-12" />
+              <div className="absolute top-4 right-4 text-primary/10">
+                <Zap className="w-16 h-16 transform -rotate-12" />
               </div>
-              <h4 className="text-sm font-bold text-primary mb-3 flex items-center uppercase tracking-wider">
-                AI Analysis Report
+              <h4 className="text-sm font-bold text-primary mb-4 flex items-center uppercase tracking-widest">
+                <span className="w-2 h-2 rounded-full bg-primary animate-ping mr-2"></span>
+                Plaza AI Intel Report
               </h4>
               <p className="text-text-light text-lg leading-relaxed font-light italic opacity-90 relative z-10">
                 "{result.explanation}"
@@ -187,11 +188,13 @@ export const FirmFinderQuiz: React.FC<FirmFinderQuizProps> = ({ onComplete }) =>
   const currentQ = QUESTIONS[step];
 
   return (
-    <div className="max-w-2xl mx-auto py-10">
-      <div className="mb-10">
-        <div className="flex justify-between text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
-          <span>Assessment Progress</span>
-          <span>{Math.round(((step + 1) / QUESTIONS.length) * 100)}%</span>
+    <div className="max-w-2xl mx-auto py-10 pt-32">
+      <div className="mb-12 text-center">
+        <h1 className="text-3xl font-extrabold text-white mb-4">Plaza AI <span className="text-primary">Matchmaker</span></h1>
+        <p className="text-text-muted mb-8">Answer exactly how you trade to find your ultimate prop firm.</p>
+        <div className="flex justify-between text-xs font-bold text-primary uppercase tracking-wider mb-3 px-1">
+          <span>Calibration Progress</span>
+          <span>{Math.round(((step) / QUESTIONS.length) * 100)}%</span>
         </div>
         <div className="h-1.5 bg-white/5 rounded-full overflow-hidden backdrop-blur-sm">
           <div
@@ -210,7 +213,7 @@ export const FirmFinderQuiz: React.FC<FirmFinderQuizProps> = ({ onComplete }) =>
             <button
               key={opt}
               onClick={() => handleOptionSelect(currentQ.key, opt)}
-              className="w-full text-left p-5 rounded-xl bg-white/[0.03] hover:bg-primary/10 border border-white/5 hover:border-primary/40 transition-all flex items-center justify-between group hover:pl-6 duration-300"
+              className="w-full text-left p-6 rounded-2xl bg-dark/40 border border-white/5 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 flex items-center justify-between group hover:pl-8 shadow-lg hover:shadow-[0_10px_30px_-15px_rgba(31,214,85,0.4)] backdrop-blur-md"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
               <span className="font-medium text-lg text-text-light group-hover:text-white">

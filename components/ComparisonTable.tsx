@@ -10,7 +10,7 @@ interface ComparisonTableProps {
 export const ComparisonTable: React.FC<ComparisonTableProps> = ({ firms, onRemove }) => {
   if (firms.length === 0) {
     return (
-      <div className="text-center py-32 bg-gradient-to-br from-[#0f0b1e] to-black rounded-[2rem] border border-dashed border-secondary/30 flex flex-col items-center justify-center relative overflow-hidden group">
+      <div className="text-center py-32 bg-gradient-to-br from-[#0f1a12] to-black rounded-[2rem] border border-dashed border-secondary/30 flex flex-col items-center justify-center relative overflow-hidden group">
         <div className="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
         <div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/30 shadow-[0_0_30px_rgba(34,228,175,0.15)] relative z-10">
           <SlidersHorizontal className="w-10 h-10 text-secondary" />
@@ -22,7 +22,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({ firms, onRemov
   }
 
   return (
-    <div className="overflow-x-auto pb-4 rounded-3xl border border-secondary/30 bg-[#0f0b1e]/80 shadow-[0_20px_50px_-12px_rgba(34,228,175,0.1)] backdrop-blur-md">
+    <div className="overflow-x-auto pb-4 rounded-3xl border border-secondary/30 bg-[#0f1a12]/80 shadow-[0_20px_50px_-12px_rgba(34,228,175,0.1)] backdrop-blur-md">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr>
@@ -76,7 +76,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({ firms, onRemov
             { label: 'Trust Score', key: 'trustScore', icon: Award, format: (v: number) => <div className="flex items-center justify-center font-bold text-yellow-400"><CheckCircle className="w-4 h-4 mr-1.5" /> {v}/5.0</div> },
           ].map((row, idx) => (
             <tr key={idx} className={`group hover:bg-white/[0.04] transition-colors ${idx % 2 !== 0 ? 'bg-white/[0.01]' : ''}`}>
-              <td className="p-6 md:p-8 font-semibold text-gray-400 sticky left-0 bg-[#0f0b1e]/95 backdrop-blur-xl z-10 border-r border-white/5 group-hover:text-white transition-colors">
+              <td className="p-6 md:p-8 font-semibold text-gray-400 sticky left-0 bg-[#0f1a12]/95 backdrop-blur-xl z-10 border-r border-white/5 group-hover:text-white transition-colors">
                 <div className="flex items-center space-x-3">
                   {row.icon && <row.icon className={`w-5 h-5 ${row.color || 'text-gray-500'}`} />}
                   <span>{row.label}</span>

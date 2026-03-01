@@ -66,10 +66,10 @@ const AdminLayout: React.FC = () => {
     return (
         <div className="bg-[#030014] text-white overflow-hidden h-screen flex font-sans">
             {/* Sidebar */}
-            <aside className={`${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} lg:w-64 bg-[#0F0B1E] border-r border-[#2D2745] flex flex-col h-full flex-shrink-0 transition-all duration-300`}>
+            <aside className={`${isSidebarOpen ? 'w-64' : 'w-0 overflow-hidden'} lg:w-64 bg-[#0f1a12] border-r border-[#122417] flex flex-col h-full flex-shrink-0 transition-all duration-300`}>
                 {/* Logo */}
-                <div className="p-5 border-b border-[#2D2745] flex items-center h-[5rem] cursor-pointer" onClick={() => navigate('/admin')}>
-                    <img src="/logo.png" alt="Capital Match Admin" className="h-[4.5rem] w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] -ml-2" />
+                <div className="p-5 border-b border-[#122417] flex items-center h-[5rem] cursor-pointer" onClick={() => navigate('/admin')}>
+                    <img src="/logo.png" alt="Admin Dashboard" className="h-[4.5rem] w-auto object-contain -ml-2" />
                 </div>
 
                 {/* Navigation */}
@@ -104,7 +104,7 @@ const AdminLayout: React.FC = () => {
                 </nav>
 
                 {/* User Footer */}
-                <div className="p-3 border-t border-[#2D2745]">
+                <div className="p-3 border-t border-[#122417]">
                     <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-white/5 group">
                         <div className="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
                             <span className="text-primary font-bold text-[11px] uppercase">
@@ -129,7 +129,7 @@ const AdminLayout: React.FC = () => {
             {/* Main Content */}
             <main className="flex-1 flex flex-col h-full overflow-hidden bg-[#030014] relative">
                 {/* Top Header */}
-                <header className="h-14 border-b border-[#2D2745] flex items-center justify-between px-6 bg-[#030014]/95 backdrop-blur-md sticky top-0 z-10 flex-shrink-0">
+                <header className="h-14 border-b border-[#122417] flex items-center justify-between px-6 bg-[#030014]/95 backdrop-blur-md sticky top-0 z-10 flex-shrink-0">
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -140,7 +140,7 @@ const AdminLayout: React.FC = () => {
                         <div className="relative hidden sm:flex items-center">
                             <Search size={14} className="absolute left-3 text-white/30" />
                             <input
-                                className="bg-[#161229] border border-[#2D2745] text-white text-sm rounded-lg pl-9 pr-4 py-2 w-64 focus:outline-none focus:border-primary/50 placeholder:text-white/20 transition-all"
+                                className="bg-[#161229] border border-[#122417] text-white text-sm rounded-lg pl-9 pr-4 py-2 w-64 focus:outline-none focus:border-primary/50 placeholder:text-white/20 transition-all"
                                 placeholder="Search firms, users..."
                                 type="text"
                             />

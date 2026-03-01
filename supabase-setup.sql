@@ -1,5 +1,5 @@
 -- ============================================================
--- CAPITAL MATCH — Supabase Database Setup
+-- PROPFIRMS PLAZA — Supabase Database Setup
 -- Run this ENTIRE script in your Supabase SQL Editor:
 --   Dashboard → SQL Editor → New Query → Paste → Run
 -- ============================================================

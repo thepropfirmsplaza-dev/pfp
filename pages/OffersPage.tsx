@@ -111,7 +111,7 @@ const OffersPage: React.FC = () => {
         </div>
 
         {/* Featured Hero Card (Static for now, could be dynamic later) */}
-        <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-primary/20 via-[#1a142c] to-accent/20 p-6 md:p-8 relative overflow-hidden group shadow-[0_0_40px_-15px_rgba(0, 230, 160, )] hover:shadow-[0_0_60px_-15px_rgba(0, 230, 160, )] transition-all duration-500">
+        <div className="rounded-3xl border border-primary/30 bg-gradient-to-r from-primary/20 via-[#1a142c] to-accent/20 p-6 md:p-8 relative overflow-hidden group shadow-[0_0_40px_-15px_rgba(31, 214, 85, 0.4)] hover:shadow-[0_0_60px_-15px_rgba(31, 214, 85, 0.4)] transition-all duration-500">
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-[80px] pointer-events-none"></div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
@@ -149,7 +149,7 @@ const OffersPage: React.FC = () => {
             </div>
           ) : offers.length > 0 ? (
             offers.map((offer) => (
-              <div key={offer.id} className="group flex flex-col justify-between gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_10px_40px_-10px_rgba(0, 230, 160, )] hover:bg-white/[0.04]">
+              <div key={offer.id} className="group flex flex-col justify-between gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_10px_40px_-10px_rgba(31, 214, 85, 0.4)] hover:bg-white/[0.04]">
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-3">

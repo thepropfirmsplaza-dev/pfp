@@ -4,8 +4,8 @@ import { usePlatformSettings } from '../lib/usePlatformSettings';
 
 const MaintenanceMode: React.FC = () => {
     const { settings } = usePlatformSettings();
-    const platformName = settings?.platform_name || 'Capital Match';
-    const supportEmail = settings?.support_email || 'support@thecapitalmatch.com';
+    const platformName = settings?.platform_name || 'PropFirms Plaza';
+    const supportEmail = settings?.support_email || 'support@propfirmsplaza.com';
 
     return (
         <div className="min-h-screen bg-brand-black flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">

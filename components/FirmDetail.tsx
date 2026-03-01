@@ -472,7 +472,7 @@ export const FirmDetail: React.FC<FirmDetailProps> = ({ firmId, onBack }) => {
 
         {/* Detailed Account Pricing Table - Full Width */}
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 my-12">
-          <div className="bg-[#0f0b1e] border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
+          <div className="bg-[#0f1a12] border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
             <div className="p-6 md:p-8 bg-gradient-to-r from-white/[0.02] to-transparent border-b border-white/[0.06] flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-2 flex items-center space-x-3">

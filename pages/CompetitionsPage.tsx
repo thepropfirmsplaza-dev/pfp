@@ -243,7 +243,7 @@ const CompetitionsPage = () => {
                     const featured = filteredCompetitions.find(c => c.status === 'active') || filteredCompetitions[0];
                     return (
                         <div className="mb-12 group">
-                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(0, 230, 160, )]">
+                            <div className="relative bg-gradient-to-br from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(31, 214, 85, 0.4)]">
                                 <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
@@ -302,7 +302,7 @@ const CompetitionsPage = () => {
                                                     src={featured.image_url}
                                                     alt={featured.firm_name}
                                                     className="w-full h-full object-contain drop-shadow-2xl"
-                                                    onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/200x200/0f0b1e/8B5CF6?text=${featured.firm_name.charAt(0)}`; }}
+                                                    onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/200x200/0f1a12/1fd655?text=${featured.firm_name.charAt(0)}`; }}
                                                 />
                                             </div>
                                             {/* Countdown badge */}
@@ -324,17 +324,17 @@ const CompetitionsPage = () => {
                         {filteredCompetitions.map((comp, index) => (
                             <div
                                 key={comp.id}
-                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(0, 230, 160, )] flex flex-col h-full"
+                                className="group bg-white/[0.02] backdrop-blur-sm border border-white/[0.06] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-15px_rgba(31, 214, 85, 0.4)] flex flex-col h-full"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 {/* Image Banner */}
                                 <div className="h-48 bg-gradient-to-br from-primary/5 to-accent/10 relative overflow-hidden p-6 flex items-center justify-center">
                                     <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent"></div>
                                     <img
-                                        src={comp.image_url || 'https://placehold.co/150/0f0b1e/8B5CF6?text=CM'}
+                                        src={comp.image_url || 'https://placehold.co/150/0f1a12/1fd655?text=CM'}
                                         alt={comp.firm_name}
                                         className="h-20 w-auto object-contain z-10 drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500"
-                                        onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/150/0f0b1e/8B5CF6?text=${comp.firm_name.charAt(0)}`; }}
+                                        onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/150/0f1a12/1fd655?text=${comp.firm_name.charAt(0)}`; }}
                                     />
 
                                     {/* Status Badge */}
@@ -434,8 +434,8 @@ const CompetitionsPage = () => {
                 <div className="mt-16 text-center">
                     <div className="inline-block bg-gradient-to-r from-primary/10 via-white/[0.02] to-accent/10 border border-primary/20 rounded-2xl px-10 py-8">
                         <h3 className="text-2xl font-bold text-white mb-2">Want to host a competition?</h3>
-                        <p className="text-gray-400 mb-5">Partner with Capital Match to reach thousands of active traders.</p>
-                        <a href="mailto:admin@thecapitalmatch.com" className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-primary/25">
+                        <p className="text-gray-400 mb-5">Partner with PropFirms Plaza to reach thousands of active traders.</p>
+                        <a href="mailto:admin@propfirmsplaza.com" className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-primary/25">
                             Contact Us <ArrowRight size={16} />
                         </a>
                     </div>

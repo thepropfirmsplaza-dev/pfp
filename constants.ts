@@ -131,7 +131,7 @@ export const NAV_ITEMS = [
   { id: 'compare', label: 'Compare', icon: TrendingUp, path: '/compare' },
   { id: 'competitions', label: 'Competitions', icon: Trophy, path: '/competitions' },
   { id: 'offers', label: 'Offers', icon: Gift, path: '/offers' },
-  { id: 'quiz', label: 'Match AI', icon: Zap, path: '/quiz' },
+  { id: 'quiz', label: 'Plaza AI', icon: Zap, path: '/quiz' },
   { id: 'dashboard', label: 'Dashboard', icon: ShieldCheck, path: '/dashboard' },
 ];
 

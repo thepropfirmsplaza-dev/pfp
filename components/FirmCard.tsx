@@ -31,7 +31,7 @@ export const FirmCard: React.FC<FirmCardProps> = ({ firm, onCompare, isSelectedF
     const features = firm.features || firm.tags || [];
 
     return (
-        <div className="group relative rounded-2xl border border-secondary/40 bg-[#0f0b1e]/90 backdrop-blur-md overflow-hidden hover:-translate-y-1 transition-all duration-500 hover:border-secondary hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.4)] flex flex-col h-full">
+        <div className="group relative rounded-2xl border border-secondary/40 bg-[#0f1a12]/90 backdrop-blur-md overflow-hidden hover:-translate-y-1 transition-all duration-500 hover:border-secondary hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.4)] flex flex-col h-full">
 
             {/* Hover Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

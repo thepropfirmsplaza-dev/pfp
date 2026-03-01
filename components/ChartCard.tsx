@@ -18,7 +18,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({
     className = ''
 }) => {
     return (
-        <div className={`relative group overflow-hidden rounded-[2rem] bg-[#0f0b1e]/60 backdrop-blur-xl border border-white/5 hover:border-secondary/30 transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.15)] ${className}`}>
+        <div className={`relative group overflow-hidden rounded-[2rem] bg-[#0f1a12]/60 backdrop-blur-xl border border-white/5 hover:border-secondary/30 transition-all duration-500 hover:shadow-[0_20px_50px_-12px_rgba(34,228,175,0.15)] ${className}`}>
 
             {/* Subtle Gradient Atmosphere inside the card */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none z-0"></div>

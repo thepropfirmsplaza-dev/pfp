@@ -48,7 +48,7 @@ export const determineGroqMatch = async (prefs: QuizPreferences): Promise<{ firm
 
         // 3. Build the highly specific instructional prompt
         const prompt = `
-      You are an expert prop trading AI consultant for Capital Match.
+      You are an expert prop trading AI consultant for PropFirms Plaza.
       Your task is to analyze the user's preferences and select the SINGLE best firm from our live database.
 
       USER PROFILE:

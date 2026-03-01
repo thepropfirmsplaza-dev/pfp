@@ -76,7 +76,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         // 1. PRIORITY: Hardcoded admin check (Bypasses DB for critical access)
         const emailLower = user.email?.toLowerCase();
         const adminEmails = [
-            'admin@thecapitalmatch.com',
+            'thepropfirmsplaza@gmail.com',
+            'admin@propfirmsplaza.com',
             'admin@capitalmatch.io',
             'capitalmatch@gmail.com',
             'thecapitalmatch@gmail.com',

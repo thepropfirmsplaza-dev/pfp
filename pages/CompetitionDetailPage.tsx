@@ -215,7 +215,7 @@ const CompetitionDetailPage = () => {
                                         src={competition.image_url}
                                         alt={competition.firm_name}
                                         className="max-h-full max-w-full object-contain"
-                                        onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/80/0f0b1e/8B5CF6?text=${competition.firm_name.charAt(0)}`; }}
+                                        onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/80/0f1a12/1fd655?text=${competition.firm_name.charAt(0)}`; }}
                                     />
                                 </div>
                                 <div>
@@ -281,7 +281,7 @@ const CompetitionDetailPage = () => {
                                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Calendar size={18} className="text-primary" /> Event Timeline</h3>
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(0, 230, 160, )]"></div>
+                                        <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(31, 214, 85, 0.4)]"></div>
                                         <div>
                                             <div className="text-white font-medium">Registration Opens</div>
                                             <div className="text-gray-500 text-sm">{formatDate(competition.start_date)}</div>

@@ -16,7 +16,7 @@ export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = () => {
 
     if (firms.length === 0) {
         return (
-            <div className="text-center py-32 bg-gradient-to-br from-[#0f0b1e] to-black rounded-[2rem] border border-dashed border-secondary/30 flex flex-col items-center justify-center relative overflow-hidden group">
+            <div className="text-center py-32 bg-gradient-to-br from-[#0f1a12] to-black rounded-[2rem] border border-dashed border-secondary/30 flex flex-col items-center justify-center relative overflow-hidden group">
                 <div className="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div className="w-20 h-20 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/30 shadow-[0_0_30px_rgba(34,228,175,0.15)] relative z-10">
                     <SlidersHorizontal className="w-10 h-10 text-secondary" />
@@ -25,7 +25,7 @@ export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = () => {
                 <p className="text-gray-400 max-w-md relative z-10">Select up to 5 firms from the directory to meticulously compare their rules, scaling plans, and payouts side-by-side.</p>
 
                 <div className="mt-12 text-center relative z-20">
-                    <button onClick={onExplore} className="bg-[#0f0b1e] text-white border border-secondary/30 hover:bg-secondary/20 hover:border-secondary hover:shadow-[0_0_30px_rgba(34,228,175,0.3)] transition-all px-10 py-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-3 mx-auto group">
+                    <button onClick={onExplore} className="bg-[#0f1a12] text-white border border-secondary/30 hover:bg-secondary/20 hover:border-secondary hover:shadow-[0_0_30px_rgba(34,228,175,0.3)] transition-all px-10 py-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-3 mx-auto group">
                         <SlidersHorizontal className="w-5 h-5 text-secondary group-hover:scale-110 transition-transform" />
                         <span>Browse Directory to Select Firms</span>
                     </button>
@@ -44,7 +44,7 @@ export const VisualComparisonHub: React.FC<VisualComparisonHubProps> = () => {
             </div>
 
             {/* Global Control Bar (Sticky) */}
-            <div className="sticky top-[90px] z-50 w-full bg-[#0f0b1e]/95 backdrop-blur-xl border-b border-t border-white/10 px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4 relative mb-8">
+            <div className="sticky top-[90px] z-50 w-full bg-[#0f1a12]/95 backdrop-blur-xl border-b border-t border-white/10 px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4 relative mb-8">
 
 
                 {/* Firm Selector Pills */}

@@ -1,4 +1,4 @@
--- Capital Match Admin Force Login 
+-- PropFirms Plaza Admin Force Login 
 -- Run this in your Supabase SQL Editor
 
 -- Completely drop the admin user if it exists so we can start totally clean

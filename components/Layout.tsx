@@ -22,7 +22,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center cursor-pointer group" onClick={() => navigate('/')}>
             <div className="relative mr-3 flex items-center h-10">
-              <img src="/logo.png" alt="Capital Match Logo" className="h-[4.5rem] w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all -ml-1" />
+              <img src="/logo.png" alt="Platform Logo" className="h-[4.5rem] w-auto object-contain transition-all -ml-1" />
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center mb-6 h-8 cursor-pointer" onClick={() => navigate('/')}>
-                <img src="/logo.png" alt="Capital Match Logo" className="h-[4rem] w-auto object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] -ml-2" />
+                <img src="/logo.png" alt="Platform Logo" className="h-[4rem] w-auto object-contain -ml-2" />
               </div>
               <p className="text-text-muted text-sm leading-relaxed mb-6">
                 The premier ecosystem for proprietary trading firms. Discovery, analytics, and verification powered by AI.
@@ -140,7 +140,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
           </div>
           <div className="mt-16 pt-8 border-t border-white/5 text-center text-xs text-text-muted flex flex-col md:flex-row justify-between items-center">
-            <p>© 2026 Capital Match. All rights reserved.</p>
+            <p>© 2026 PropFirms Plaza. All rights reserved.</p>
             <p className="mt-2 md:mt-0">Built for the future of funding.</p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
 interface FirmData {
@@ -119,7 +119,7 @@ const PayoutNotification: React.FC = () => {
             };
         } else {
             // Discount Logic
-            // Code: SPOT
+            // Code: PLAZA
             // Real Price = challenge.price
             // "Was" Price (implied) = Real Price / 0.8
             // Saved = Was - Real
@@ -132,7 +132,7 @@ const PayoutNotification: React.FC = () => {
                     accountSize: accountSizeDisplay,
                     currency: '$',
                     amount: '',
-                    discountCode: 'SPOT',
+                    discountCode: 'PLAZA',
                     savedAmount: '20'
                 };
             }
@@ -146,7 +146,7 @@ const PayoutNotification: React.FC = () => {
                 accountSize: accountSizeDisplay,
                 currency: '$',
                 amount: '',
-                discountCode: 'SPOT', // HARDCODED
+                discountCode: 'PLAZA', // HARDCODED
                 savedAmount: saved.toLocaleString(),
             };
         }

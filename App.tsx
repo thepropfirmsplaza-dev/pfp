@@ -50,7 +50,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; role?: 'admin' | 'us
     const { user, isAdmin, loading } = useAuth();
 
     if (loading) {
-        return <div className="min-h-screen bg-black flex items-center justify-center text-brand-gold">Loading Capital Match...</div>;
+        return <div className="min-h-screen bg-black flex items-center justify-center text-brand-gold">Loading PropFirms Plaza...</div>;
     }
 
     if (!user) {
@@ -86,7 +86,7 @@ const MainLayout = () => {
                 <Layout activeView="home" onViewChange={() => { }}>
                     <main className="flex-grow">
                         <Routes>
-                            {/* Legacy Capital Match Routes */}
+                            {/* Legacy PropFirms Plaza Routes */}
                             <Route path="/" element={<LandingPage />} />
                             <Route path="/quiz" element={<Quiz onComplete={() => window.location.hash = '#/firms'} />} />
                             <Route path="/hub" element={<div className="pt-24 min-h-screen"><VisualComparisonHub /></div>} />

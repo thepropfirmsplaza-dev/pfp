@@ -146,7 +146,7 @@ const BrowseFirmsPage: React.FC = () => {
                       type="text"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full bg-[#0f0b1e] border border-white/10 rounded-xl pl-11 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-1 focus:ring-primary/50 placeholder-gray-600 outline-none transition-all shadow-inner"
+                      className="w-full bg-[#0f1a12] border border-white/10 rounded-xl pl-11 pr-4 py-3 text-sm text-white focus:border-primary/50 focus:ring-1 focus:ring-primary/50 placeholder-gray-600 outline-none transition-all shadow-inner"
                       placeholder="e.g. FTMO, Alpha"
                     />
                   </div>
@@ -162,7 +162,7 @@ const BrowseFirmsPage: React.FC = () => {
                         onClick={() => setSelectedAccountType(selectedAccountType === type ? null : type)}
                         className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${selectedAccountType === type
                           ? 'bg-primary text-white border-primary shadow-[0_0_15px_rgba(10,193,201,)]'
-                          : 'bg-[#0f0b1e] text-gray-400 border-white/10 hover:border-primary/50 hover:text-white'
+                          : 'bg-[#0f1a12] text-gray-400 border-white/10 hover:border-primary/50 hover:text-white'
                           }`}
                       >
                         {type}
@@ -221,7 +221,7 @@ const BrowseFirmsPage: React.FC = () => {
                   <div className="flex flex-col gap-3">
                     {[4, 3].map((rating) => (
                       <label key={rating} className="flex items-center gap-3 cursor-pointer group">
-                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${minRating === rating ? 'bg-primary border-primary' : 'bg-[#0f0b1e] border-white/20 group-hover:border-primary/50'}`}>
+                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${minRating === rating ? 'bg-primary border-primary' : 'bg-[#0f1a12] border-white/20 group-hover:border-primary/50'}`}>
                           {minRating === rating && <CheckCircle2 className="w-3.h-3 text-white" />}
                         </div>
                         <input
@@ -248,7 +248,7 @@ const BrowseFirmsPage: React.FC = () => {
                   <div className="space-y-3">
                     {['Forex', 'Indices', 'Commodities', 'Crypto'].map((asset) => (
                       <label key={asset} className="flex items-center gap-3 group cursor-pointer select-none">
-                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${['Indices', 'Forex'].includes(asset) ? 'bg-primary border-primary' : 'bg-[#0f0b1e] border-white/20 group-hover:border-primary/50'}`}>
+                        <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${['Indices', 'Forex'].includes(asset) ? 'bg-primary border-primary' : 'bg-[#0f1a12] border-white/20 group-hover:border-primary/50'}`}>
                           {['Indices', 'Forex'].includes(asset) && <CheckCircle2 className="w-3.h-3 text-white" />}
                         </div>
                         <input
@@ -263,7 +263,7 @@ const BrowseFirmsPage: React.FC = () => {
                 </div>
 
                 {/* CTA Block */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0f0b1e] to-primary/10 border border-primary/20 text-center space-y-4 relative overflow-hidden">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0f1a12] to-primary/10 border border-primary/20 text-center space-y-4 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
                   <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mx-auto text-primary relative z-10 border border-primary/30">
                     <Mail className="w-6 h-6" />
@@ -280,7 +280,7 @@ const BrowseFirmsPage: React.FC = () => {
               <div className="flex-1 flex flex-col min-w-0">
 
                 {/* Controls Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-8 bg-[#0f0b1e]/80 backdrop-blur-md p-4 rounded-2xl border border-white/5 shadow-xl">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-8 bg-[#0f1a12]/80 backdrop-blur-md p-4 rounded-2xl border border-white/5 shadow-xl">
                   <div className="flex items-center gap-2 px-2">
                     <span className="text-sm text-gray-400">Found <span className="text-primary font-bold text-base px-1">{filteredFirms.length}</span> verified match{filteredFirms.length !== 1 && 'es'}</span>
                   </div>
@@ -314,7 +314,7 @@ const BrowseFirmsPage: React.FC = () => {
 
                 {/* Empty State */}
                 {filteredFirms.length === 0 && (
-                  <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 rounded-3xl bg-[#0f0b1e]/50 backdrop-blur-sm">
+                  <div className="flex flex-col items-center justify-center p-16 text-center border border-white/5 rounded-3xl bg-[#0f1a12]/50 backdrop-blur-sm">
                     <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6">
                       <Search className="w-10 h-10 text-gray-500" />
                     </div>
@@ -344,7 +344,7 @@ const BrowseFirmsPage: React.FC = () => {
                 {/* Load More */}
                 {filteredFirms.length > 0 && (
                   <div className="mt-12 text-center">
-                    <button className="px-8 py-3 bg-[#0f0b1e] hover:bg-white/5 border border-white/10 text-white rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group">
+                    <button className="px-8 py-3 bg-[#0f1a12] hover:bg-white/5 border border-white/10 text-white rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group">
                       <span className="flex items-center gap-2">
                         Load More Matches
                         <Zap className="w-4 h-4 text-primary group-hover:fill-primary transition-all" />

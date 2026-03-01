@@ -120,10 +120,10 @@ const AdminDashboard: React.FC = () => {
             <div className="flex items-end justify-between">
                 <div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">Platform Overview</h2>
-                    <p className="text-white/40 text-sm mt-1">Capital Match admin dashboard — live metrics and queue.</p>
+                    <p className="text-white/40 text-sm mt-1">PropFirms Plaza admin dashboard — live metrics and queue.</p>
                 </div>
                 <div className="flex gap-3">
-                    <select className="bg-[#161229] border border-[#2D2745] text-white/70 text-sm rounded-lg px-3 py-1.5 focus:border-primary outline-none transition-colors">
+                    <select className="bg-[#161229] border border-[#122417] text-white/70 text-sm rounded-lg px-3 py-1.5 focus:border-primary outline-none transition-colors">
                         <option>Last 30 Days</option>
                         <option>Last Quarter</option>
                         <option>Year to Date</option>
@@ -134,7 +134,7 @@ const AdminDashboard: React.FC = () => {
             {/* Stat Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {statCards.map((card) => (
-                    <div key={card.label} className={`bg-[#0F0B1E] border border-[#2D2745] hover:border-[#3D3565] p-5 rounded-xl flex flex-col gap-1 transition-all group relative overflow-hidden`}>
+                    <div key={card.label} className={`bg-[#0f1a12] border border-[#122417] hover:border-[#15a13c] p-5 rounded-xl flex flex-col gap-1 transition-all group relative overflow-hidden`}>
                         <div className="flex justify-between items-start mb-2">
                             <span className="text-white/40 text-[10px] font-bold uppercase tracking-wider leading-tight">{card.label}</span>
                             <div className={`${card.bg} ${card.border} border p-1.5 rounded-lg`}>
@@ -160,7 +160,7 @@ const AdminDashboard: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                 {/* Firm Growth Chart */}
-                <div className="lg:col-span-2 bg-[#0F0B1E] border border-[#2D2745] rounded-xl p-6">
+                <div className="lg:col-span-2 bg-[#0f1a12] border border-[#122417] rounded-xl p-6">
                     <div className="flex justify-between items-center mb-6">
                         <div>
                             <h3 className="text-white font-bold">Firm Listing Growth</h3>
@@ -171,27 +171,27 @@ const AdminDashboard: React.FC = () => {
                         <svg className="w-full h-full overflow-visible" viewBox="0 0 800 200">
                             <defs>
                                 <linearGradient id="cmChartGradient" x1="0" x2="0" y1="0" y2="1">
-                                    <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.2" />
-                                    <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
+                                    <stop offset="0%" stopColor="#1fd655" stopOpacity="0.2" />
+                                    <stop offset="100%" stopColor="#1fd655" stopOpacity="0" />
                                 </linearGradient>
                             </defs>
                             {/* Grid Lines */}
                             {[160, 120, 80, 40].map(y => (
-                                <line key={y} stroke="#2D2745" strokeDasharray="4" strokeWidth="1" x1="0" x2="800" y1={y} y2={y} />
+                                <line key={y} stroke="#122417" strokeDasharray="4" strokeWidth="1" x1="0" x2="800" y1={y} y2={y} />
                             ))}
                             {/* Chart Line */}
                             <path d="M0,180 C60,175 100,160 160,140 C220,120 260,135 320,105 C380,75 420,95 480,65 C540,45 580,70 640,40 C700,15 750,25 800,20"
-                                fill="none" stroke="#8B5CF6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+                                fill="none" stroke="#1fd655" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
                             {/* Area */}
                             <path d="M0,180 C60,175 100,160 160,140 C220,120 260,135 320,105 C380,75 420,95 480,65 C540,45 580,70 640,40 C700,15 750,25 800,20 V200 H0 Z"
                                 fill="url(#cmChartGradient)" opacity="0.6" />
                             {/* Data Points */}
                             {[[160, 140], [320, 105], [480, 65], [640, 40], [800, 20]].map(([cx, cy]) => (
-                                <circle key={`${cx}-${cy}`} cx={cx} cy={cy} fill="#0F0B1E" r="4" stroke="#8B5CF6" strokeWidth="2" />
+                                <circle key={`${cx}-${cy}`} cx={cx} cy={cy} fill="#0f1a12" r="4" stroke="#1fd655" strokeWidth="2" />
                             ))}
                             {/* Tooltip */}
                             <g transform="translate(640, 20)">
-                                <rect fill="#8B5CF6" height="22" rx="4" width="66" x="-33" y="-32" />
+                                <rect fill="#1fd655" height="22" rx="4" width="66" x="-33" y="-32" />
                                 <text fill="#030014" fontSize="11" fontWeight="bold" textAnchor="middle" x="0" y="-16">45 Firms</text>
                             </g>
                         </svg>
@@ -202,7 +202,7 @@ const AdminDashboard: React.FC = () => {
                 </div>
 
                 {/* Needs Attention Queue */}
-                <div className="bg-[#0F0B1E] border border-[#2D2745] rounded-xl p-6 flex flex-col">
+                <div className="bg-[#0f1a12] border border-[#122417] rounded-xl p-6 flex flex-col">
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-white font-bold">Needs Attention</h3>
                         <span className="bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-full">3 Pending</span>
@@ -238,13 +238,13 @@ const AdminDashboard: React.FC = () => {
             </div>
 
             {/* Recent Activity Table */}
-            <div className="bg-[#0F0B1E] border border-[#2D2745] rounded-xl overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#2D2745] flex flex-wrap gap-4 justify-between items-center">
+            <div className="bg-[#0f1a12] border border-[#122417] rounded-xl overflow-hidden">
+                <div className="px-6 py-4 border-b border-[#122417] flex flex-wrap gap-4 justify-between items-center">
                     <div className="flex items-center gap-3">
                         <h3 className="text-white font-bold">Firm Applications</h3>
                         <span className="bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded-md">Pending Approval</span>
                     </div>
-                    <select className="bg-[#161229] border border-[#2D2745] text-white/50 text-xs rounded-lg px-3 py-1.5 outline-none focus:border-primary">
+                    <select className="bg-[#161229] border border-[#122417] text-white/50 text-xs rounded-lg px-3 py-1.5 outline-none focus:border-primary">
                         <option>All Statuses</option>
                         <option>Pending</option>
                         <option>Rejected</option>
@@ -253,7 +253,7 @@ const AdminDashboard: React.FC = () => {
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-black/20 border-b border-[#2D2745] text-[10px] uppercase text-white/30 font-bold tracking-wider">
+                            <tr className="bg-black/20 border-b border-[#122417] text-[10px] uppercase text-white/30 font-bold tracking-wider">
                                 <th className="px-6 py-3.5">Firm Name</th>
                                 <th className="px-6 py-3.5">Submitted</th>
                                 <th className="px-6 py-3.5">Max Account Size</th>
@@ -290,7 +290,7 @@ const AdminDashboard: React.FC = () => {
 const AttentionItem = ({ icon, iconBg, title, desc, time, action }: {
     icon: React.ReactNode; iconBg: string; title: string; desc: string; time: string; action: string;
 }) => (
-    <div className="flex gap-3 items-start p-3 rounded-lg bg-black/30 border border-[#2D2745] hover:border-primary/20 transition-colors cursor-pointer group">
+    <div className="flex gap-3 items-start p-3 rounded-lg bg-black/30 border border-[#122417] hover:border-primary/20 transition-colors cursor-pointer group">
         <div className={`${iconBg} p-2 rounded-lg mt-0.5`}>{icon}</div>
         <div className="flex-1 min-w-0">
             <div className="flex justify-between items-center mb-0.5">
@@ -324,7 +324,7 @@ const ApplicationRow = ({ name, type, submitted, maxAccount, trust, status }: {
         <td className="px-6 py-4 text-white font-mono text-sm">{maxAccount}</td>
         <td className="px-6 py-4">
             <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${trust === 'High' ? 'bg-green-500/10 text-green-400 border-green-500/20' :
-                    'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
+                'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
                 }`}>{trust}</span>
         </td>
         <td className="px-6 py-4">

@@ -35,7 +35,7 @@ const FAQS = [
         answer: "If you violate a hard rule (like the maximum daily loss), your account will be closed. However, any profits you generated before the breach are usually forfeited, and you must purchase a new challenge to get funded again."
     },
     {
-        question: "How does Capital Match's AI Matching tool work?",
+        question: "How does PropFirms Plaza's AI Matching tool work?",
         answer: "Our AI algorithm analyzes your trading style, budget, risk tolerance, and preferred instruments to instantly recommend the exact prop firms that mathematically offer you the highest probability of success."
     }
 ];
@@ -78,8 +78,8 @@ export const FAQSection: React.FC = () => {
                             <div
                                 key={index}
                                 className={`group border rounded-2xl transition-all duration-300 overflow-hidden ${isOpen
-                                        ? 'bg-white/[0.04] border-primary/30 shadow-[0_0_30px_rgba(10,193,201,)]'
-                                        : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
+                                    ? 'bg-white/[0.04] border-primary/30 shadow-[0_0_30px_rgba(10,193,201,)]'
+                                    : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.03]'
                                     }`}
                             >
                                 <button
@@ -90,8 +90,8 @@ export const FAQSection: React.FC = () => {
                                         {faq.question}
                                     </span>
                                     <div className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300 ${isOpen
-                                            ? 'bg-primary/20 border-primary/50 text-white rotate-180'
-                                            : 'bg-white/[0.05] border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white'
+                                        ? 'bg-primary/20 border-primary/50 text-white rotate-180'
+                                        : 'bg-white/[0.05] border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white'
                                         }`}>
                                         <ChevronDown className="w-5 h-5" />
                                     </div>
