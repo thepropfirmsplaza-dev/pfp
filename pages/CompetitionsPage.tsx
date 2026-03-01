@@ -198,16 +198,16 @@ const CompetitionsPage = () => {
                 </div>
 
                 {/* Stats Bar */}
-                <div className="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
-                    <div className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-primary/30 transition-all duration-300">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
+                    <div className="col-span-2 md:col-span-1 bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-primary/30 transition-all duration-300">
                         <div className="text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors">${(totalPrize / 1000).toFixed(0)}K+</div>
                         <div className="text-gray-500 text-xs uppercase tracking-widest font-medium">Total Prizes</div>
                     </div>
-                    <div className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-green-500/30 transition-all duration-300">
+                    <div className="col-span-1 bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-green-500/30 transition-all duration-300">
                         <div className="text-3xl font-bold text-white mb-1 group-hover:text-green-400 transition-colors">{activeCount}</div>
                         <div className="text-gray-500 text-xs uppercase tracking-widest font-medium">Live Now</div>
                     </div>
-                    <div className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-blue-500/30 transition-all duration-300">
+                    <div className="col-span-1 bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-5 text-center group hover:border-blue-500/30 transition-all duration-300">
                         <div className="text-3xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">{upcomingCount}</div>
                         <div className="text-gray-500 text-xs uppercase tracking-widest font-medium">Upcoming</div>
                     </div>
@@ -306,9 +306,9 @@ const CompetitionsPage = () => {
                                                 />
                                             </div>
                                             {/* Countdown badge */}
-                                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-dark border border-primary/30 rounded-xl px-6 py-3 shadow-xl">
-                                                <div className="text-gray-500 text-[10px] uppercase tracking-widest text-center mb-0.5">Ends In</div>
-                                                <div className="text-white font-bold text-lg font-mono">{getDaysRemaining(featured.end_date)} Days</div>
+                                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-dark border border-primary/30 rounded-xl px-6 py-3 shadow-xl min-w-max">
+                                                <div className="text-gray-500 text-[10px] uppercase tracking-widest text-center mb-0.5 whitespace-nowrap">Ends In</div>
+                                                <div className="text-white font-bold text-lg font-mono text-center whitespace-nowrap">{getDaysRemaining(featured.end_date)} Days</div>
                                             </div>
                                         </div>
                                     </div>

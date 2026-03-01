@@ -9,6 +9,11 @@ import OffersPage from './pages/OffersPage';
 import UserDashboard from './pages/UserDashboard';
 import CompetitionsPage from './pages/CompetitionsPage';
 import CompetitionDetailPage from './pages/CompetitionDetailPage';
+import TermsOfService from './pages/legal/TermsOfService';
+import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import RiskDisclosure from './pages/legal/RiskDisclosure';
+import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminFirmsPage from './pages/admin/AdminFirmsPage';
@@ -98,6 +103,13 @@ const MainLayout = () => {
                             <Route path="/competitions" element={<CompetitionsPage />} />
                             <Route path="/competition/:id" element={<CompetitionDetailPage />} />
                             <Route path="/offers" element={<OffersPage />} />
+
+                            {/* Legal & Static Pages */}
+                            <Route path="/about" element={<AboutUs />} />
+                            <Route path="/terms" element={<TermsOfService />} />
+                            <Route path="/privacy" element={<PrivacyPolicy />} />
+                            <Route path="/risk" element={<RiskDisclosure />} />
+                            <Route path="/contact" element={<ContactUs />} />
 
                             {/* Protected User Dashboard */}
                             <Route path="/dashboard" element={
