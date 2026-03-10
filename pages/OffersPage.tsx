@@ -155,7 +155,14 @@ const OffersPage: React.FC = () => {
                     <div className="flex items-center gap-3">
                       <div className="h-12 w-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 overflow-hidden shadow-inner font-bold text-white text-xs">
                         {offer.firms?.logo_url ? (
-                          <img src={offer.firms.logo_url} alt={offer.firms.name} className="w-full h-full object-contain p-2" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                          <img 
+                            src={offer.firms.logo_url.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(offer.firms.logo_url)}` : offer.firms.logo_url} 
+                            alt={offer.firms?.name} 
+                            className="w-full h-full object-contain p-2" 
+                            onError={(e) => { 
+                                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(offer.firms?.name || 'Firm')}&background=1f2937&color=10b981&bold=true`; 
+                            }} 
+                          />
                         ) : (
                           <span className="flex items-center justify-center w-full h-full">{offer.firms?.name?.substring(0, 2)}</span>
                         )}
