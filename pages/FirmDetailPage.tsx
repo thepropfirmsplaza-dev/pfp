@@ -131,7 +131,7 @@ const FirmDetailPage: React.FC = () => {
     if (!firm) return '';
     const logoUrl = firm.logo || firm.logo_url;
     if (logoUrl && typeof logoUrl === 'string') {
-      return logoUrl.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(logoUrl)}` : logoUrl;
+      return logoUrl;
     }
     return getFaviconUrl(firm.website);
   };

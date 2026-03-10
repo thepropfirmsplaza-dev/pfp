@@ -79,7 +79,7 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
     const getLogoSrc = (firm: any) => {
         const logoUrl = firm.logo || firm.logo_url;
         if (logoUrl && typeof logoUrl === 'string') {
-            return logoUrl.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(logoUrl)}` : logoUrl;
+            return logoUrl;
         }
         return getFaviconUrl(firm.website);
     };

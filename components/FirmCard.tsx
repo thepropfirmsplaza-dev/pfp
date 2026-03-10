@@ -43,7 +43,7 @@ export const FirmCard: React.FC<FirmCardProps> = ({ firm, onCompare, isSelectedF
                 <div className="flex items-center space-x-4 mb-5">
                     <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden border border-white/10 shadow-lg shrink-0 bg-white/[0.03]">
                         <img 
-                            src={logoSrc.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(logoSrc)}` : logoSrc} 
+                            src={logoSrc} 
                             alt={firm.name} 
                             className="w-full h-full object-cover" 
                             onError={(e) => { 

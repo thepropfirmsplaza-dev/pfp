@@ -156,7 +156,7 @@ const OffersPage: React.FC = () => {
                       <div className="h-12 w-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 overflow-hidden shadow-inner font-bold text-white text-xs">
                         {offer.firms?.logo_url ? (
                           <img 
-                            src={offer.firms.logo_url.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(offer.firms.logo_url)}` : offer.firms.logo_url} 
+                            src={offer.firms.logo_url} 
                             alt={offer.firms?.name} 
                             className="w-full h-full object-contain p-2" 
                             onError={(e) => { 
