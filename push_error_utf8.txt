@@ -1,0 +1,102 @@
+﻿git : remote: error: 
+GH013: Repository 
+rule violations found 
+for refs/heads/main.  
+      
+At line:1 char:1
++ git push -u origin 
+main -f 2>&1 | 
+Out-File -Encoding 
+utf8 push_error_ ...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (remote: er   
+ ror: ...s/main.      
+      :String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+remote: 
+remote: - GITHUB PUSH 
+PROTECTION        
+remote:   ΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓ
+ÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓ
+ÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+ö        
+remote:     Resolve 
+the following 
+violations before 
+pushing again        
+remote: 
+remote:     - Push 
+cannot contain 
+secrets        
+remote: 
+remote:             
+remote:      (?) 
+Learn how to resolve 
+a blocked push        
+remote:      https://d
+ocs.github.com/code-se
+curity/secret-scanning
+/working-with-secret-s
+canning-and-push-prote
+ction/working-with-pus
+h-protection-from-the-
+command-line#resolving
+-a-blocked-push       
+ 
+remote:             
+remote:             
+remote:       ΓÇöΓÇö 
+Groq API Key ΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓ
+ÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇ
+öΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇö
+ΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓÇöΓ
+ÇöΓÇöΓÇöΓÇöΓÇöΓÇö     
+   
+remote:        
+locations:        
+remote:          - 
+commit: 054121f8c59cce
+67433f0f4f38270df7ee10
+1473        
+remote:            
+path: .env:3        
+remote:             
+remote:        (?) To 
+push, remove secret 
+from commit(s) or 
+follow this URL to 
+allow the secret.     
+   
+remote:        https:/
+/github.com/thepropfir
+msplaza-dev/pfp/securi
+ty/secret-scanning/unb
+lock-secret/3Ak77PFbId
+XhTbNZ0jIpBIQsqAv     
+   
+remote:             
+remote: 
+remote: 
+To https://github.com/
+thepropfirmsplaza-dev/
+pfp.git
+ ! [remote rejected] 
+main -> main (push 
+declined due to 
+repository rule 
+violations)
+error: failed to push 
+some refs to 'https://
+github.com/thepropfirm
+splaza-dev/pfp.git'

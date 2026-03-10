@@ -77,6 +77,10 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
 
     // Derive display values from Supabase data
     const getLogoSrc = (firm: any) => {
+        const logoUrl = firm.logo || firm.logo_url;
+        if (logoUrl && typeof logoUrl === 'string') {
+            return logoUrl.includes('discordapp.com') ? `https://images.weserv.nl/?url=${encodeURIComponent(logoUrl)}` : logoUrl;
+        }
         return getFaviconUrl(firm.website);
     };
 
@@ -188,7 +192,14 @@ export const FeaturedFirms: React.FC<FeaturedFirmsProps> = ({ onExplore, onViewF
                                             <div
                                                 className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden border border-white/10 shadow-lg shrink-0 bg-white/[0.03]"
                                             >
-                                                <img src={logoSrc} alt={firm.name} className="w-full h-full object-cover" />
+                                                <img 
+                                                    src={logoSrc} 
+                                                    alt={firm.name} 
+                                                    className="w-full h-full object-cover" 
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(firm.name)}&background=1f2937&color=10b981&bold=true`;
+                                                    }}
+                                                />
                                             </div>
                                             <div>
                                                 <h3 className="text-white font-bold text-lg group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all">{firm.name}</h3>
