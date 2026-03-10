@@ -45,7 +45,7 @@ export function mapFirm(raw: any): any {
         challenges,
 
         // ─── CamelCase aliases for template compatibility ───
-        logo: faviconLogo,
+        logo: raw.logo_url || faviconLogo,
         logoUrl: raw.logo_url,
         trustScore: Number(raw.rating) || 0,        // numeric trust score (0-5)
         healthScore: Math.round((Number(raw.rating) || 4.5) * 20),
